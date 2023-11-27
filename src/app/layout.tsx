@@ -4,6 +4,7 @@ import '../styles/globals.css';
 import { ClerkProvider } from '@clerk/nextjs';
 // eslint-disable-next-line camelcase
 import { Inter, Space_Grotesk } from 'next/font/google';
+import { ThemeProvider } from '@/context/ThemeProvider';
 
 export const metadata: Metadata = {
   title: 'NextOverflow',
@@ -12,7 +13,6 @@ export const metadata: Metadata = {
 
 const inter = Inter({
   subsets: ['latin'],
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
   variable: '--font-inter',
 });
 
@@ -32,14 +32,14 @@ export default function RootLayout({
       appearance={{
         elements: {
           formButtonPrimary: 'primary-gradient',
-          footerAction: 'primary-text-gradient hoveer:text-primary-500',
+          footerAction: 'primary-text-gradient hover:text-primary-500',
         },
       }}
     >
-      <html lang="en">
-        <body className={`${inter.variable} ${spaceGrotesk.variable}`}>
-          {children}
-        </body>
+      <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
+        <ThemeProvider>
+          <body className="font-inter">{children}</body>
+        </ThemeProvider>
       </html>
     </ClerkProvider>
   );
