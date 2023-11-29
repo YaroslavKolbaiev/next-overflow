@@ -1,16 +1,15 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { UserButton, SignedIn } from '@clerk/nextjs';
+import { UserButton, SignedIn, ClerkLoading } from '@clerk/nextjs';
 import Theme from './Theme';
+import MobileNav from './MobileNav';
 
 const Navbar = () => {
   return (
     <nav
       className="flex-between
         background-light900_dark200
-        fixed
-        z-50
         w-full
         gap-5
         p-6
@@ -32,7 +31,7 @@ const Navbar = () => {
             text-dark-100
             dark:text-light-900
             max-sm:hidden
-            "
+          "
         >
           Next <span className="text-primary-500">Overflow</span>
         </p>
@@ -40,9 +39,9 @@ const Navbar = () => {
       GLobal Search
       <div className="flex-between gap-5">
         <Theme />
-        {/* <ClerkLoading>
-          <div>Clerk is loading</div>
-        </ClerkLoading> */}
+        <ClerkLoading>
+          <div className="h-10 w-10 rounded-full bg-slate-400">S_I</div>
+        </ClerkLoading>
         <SignedIn>
           <UserButton
             afterSignOutUrl="/"
@@ -52,7 +51,7 @@ const Navbar = () => {
             }}
           />
         </SignedIn>
-        MobileNav
+        <MobileNav />
       </div>
     </nav>
   );
