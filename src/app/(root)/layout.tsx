@@ -4,13 +4,13 @@ import React from 'react';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
+    // min-h-screen
     <main className="relative">
       <Navbar />
       <div className="background-light800_dark300 flex pt-2">
         <SideBar />
         <section
           className="flex
-            min-h-screen
             flex-1
             flex-col
             px-2

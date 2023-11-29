@@ -6,16 +6,20 @@ const SideBar = () => {
   return (
     <div
       className="background-light900_dark200
-        max-w-xs
+        hidden
+        max-w-[260px]
         grow
-        pt-2
+        p-4
         text-black
+        md:block
       "
     >
       <ul>
         {menuItems.map((cat) => (
-          <li key={cat.title}>
-            <span>{cat.title}</span>
+          <li className="flex flex-col gap-1" key={cat.title}>
+            <span className="text-dark500_light500 font-semibold">
+              {cat.title}
+            </span>
             {cat.list.map((item) => (
               <MenuLink item={item} key={item.title} />
             ))}
