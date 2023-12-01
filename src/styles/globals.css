@@ -2,11 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("./theme.css");
+@import url('./theme.css');
 
-body {
-  font-family: "Inter", sans-serif;
-}
+/* body {
+  font-family: 'Inter', sans-serif;
+} */
 
 @layer utilities {
   .flex-center {
