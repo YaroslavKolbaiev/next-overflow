@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { UserButton, SignedIn, ClerkLoading } from '@clerk/nextjs';
 import Theme from './Theme';
 import MobileNav from './MobileNav';
+import SearchBar from './SearchBar';
 
 const Navbar = () => {
   return (
@@ -18,6 +19,7 @@ const Navbar = () => {
         sm:px-12
       "
     >
+      <MobileNav />
       <Link href="/" className="flex items-center gap-1">
         <Image
           src="/assets/images/site-logo.svg"
@@ -28,15 +30,17 @@ const Navbar = () => {
         <p
           className="h2-bold
             font-spaceGrotesk
+            text-base
             text-dark-100
             dark:text-light-900
-            max-sm:hidden
+            max-xs:hidden
+            sm:text-3xl
           "
         >
           Next <span className="text-primary-500">Overflow</span>
         </p>
       </Link>
-      GLobal Search
+      <SearchBar />
       <div className="flex-between gap-5">
         <Theme />
         <ClerkLoading>
@@ -51,7 +55,6 @@ const Navbar = () => {
             }}
           />
         </SignedIn>
-        <MobileNav />
       </div>
     </nav>
   );

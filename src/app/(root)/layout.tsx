@@ -1,4 +1,5 @@
 import Navbar from '@/components/Navbar';
+import RightBar from '@/components/RightBar';
 import SideBar from '@/components/SideBar';
 import React from 'react';
 
@@ -16,8 +17,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             px-2
           "
         >
-          <div className="mx-auto w-full max-w-5xl">{children}</div>
+          <div className="mx-auto w-full max-w-7xl">{children}</div>
         </section>
+        <RightBar />
       </div>
     </main>
   );

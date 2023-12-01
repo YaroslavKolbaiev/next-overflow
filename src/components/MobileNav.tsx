@@ -6,18 +6,26 @@ import {
   SheetContent,
   SheetTrigger,
 } from '@/components/ui/sheet';
-// import SideBar from './SideBar';
 import { menuItems } from '@/constants/constants';
-// import MenuLink from './MenuLink';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { FiMenu } from 'react-icons/fi';
 
 const MobileNav = () => {
   const currentPath = usePathname();
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <button className="text-primary-500 md:hidden">Open</button>
+        <FiMenu
+          className="text-dark200_light800
+            h-5
+            w-5
+            transition
+            hover:cursor-pointer
+            hover:opacity-50
+            md:hidden
+          "
+        />
       </SheetTrigger>
       <SheetContent side="left">
         <ul>
@@ -38,9 +46,9 @@ const MobileNav = () => {
                       p-5
                       ${
                         currentPath === item.path &&
-                        'background-light800_dark400'
+                        'bg-light-700 dark:bg-dark-400'
                       }
-                      hover:background-light800_dark400
+                      hover:background-light700_dark400
                     `}
                   >
                     {item.icon}

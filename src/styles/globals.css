@@ -5,7 +5,7 @@
 @import url('./theme.css');
 
 /* body {
-  font-family: 'Inter', sans-serif;
+  transition: all 0.25s linear;
 } */
 
 @layer utilities {
