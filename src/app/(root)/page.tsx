@@ -5,7 +5,7 @@ import Transactions from '@/components/Transactions';
 export default function Home() {
   return (
     <div>
-      <div className="mb-2 flex justify-between gap-4">
+      <div className="mb-2 flex flex-col justify-between gap-4 sm:flex-row">
         <Card />
         <Card />
         <Card />

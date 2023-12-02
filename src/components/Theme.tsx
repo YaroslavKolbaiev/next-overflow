@@ -24,10 +24,11 @@ const Theme = () => {
       <button
         onClick={dropDownHandler}
         type="button"
-        className="focus:bg-light-900
-          data-[state=open]:bg-light-900
-          dark:focus:bg-dark-200
-          dark:data-[state=open]:bg-dark-200
+        className="focus:background-light800_dark400 
+          rounded-md 
+          p-2 
+          focus:ring-1 
+          focus:ring-primary-500
         "
       >
         {theme === 'light' ? (
@@ -50,19 +51,19 @@ const Theme = () => {
       </button>
       {isOpen && (
         <div
-          className="absolute right-[1rem] top-[2rem] min-w-[120px]"
+          className="absolute right-[1rem] top-[2.5rem] min-w-[120px]"
           id="navbar-dropdown"
         >
           <ul
-            className="flex
+            className="background-light900_dark200
+              flex
               flex-col
               gap-5
               rounded-lg
               border
-              border-gray-100
+              border-gray-200
               py-4
-              dark:border-dark-400
-              dark:bg-dark-300
+              dark:border-gray-700
             "
           >
             {themes.map((themeOption) => {

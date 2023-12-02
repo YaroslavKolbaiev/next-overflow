@@ -1,5 +1,5 @@
 import Navbar from '@/components/Navbar';
-import RightBar from '@/components/RightBar';
+// import RightBar from '@/components/RightBar';
 import SideBar from '@/components/SideBar';
 import React from 'react';
 
@@ -8,7 +8,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     // min-h-screen
     <main className="relative">
       <Navbar />
-      <div className="background-light800_dark300 flex pt-2">
+      <div className="flex pt-2 2xl:container">
         <SideBar />
         <section
           className="flex
@@ -17,9 +17,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             px-2
           "
         >
-          <div className="mx-auto w-full max-w-7xl">{children}</div>
+          <div>{children}</div>
         </section>
-        <RightBar />
+        {/* <RightBar /> */}
       </div>
     </main>
   );

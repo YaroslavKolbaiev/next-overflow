@@ -38,7 +38,9 @@ export default function RootLayout({
     >
       <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
         <ThemeProvider>
-          <body className="font-inter">{children}</body>
+          <body className="background-light800_dark300 min-h-screen font-inter">
+            {children}
+          </body>
         </ThemeProvider>
       </html>
     </ClerkProvider>
