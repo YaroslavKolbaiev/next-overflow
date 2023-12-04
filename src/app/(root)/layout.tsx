@@ -17,7 +17,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             px-2
           "
         >
-          <div>{children}</div>
+          {children}
         </section>
         {/* <RightBar /> */}
       </div>

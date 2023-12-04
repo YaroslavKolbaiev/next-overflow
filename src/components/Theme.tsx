@@ -26,14 +26,17 @@ const Theme = () => {
         type="button"
         className="focus:background-light800_dark400 
           rounded-md 
-          p-2 
-          focus:ring-1 
+          p-2
+          focus:ring-1
           focus:ring-primary-500
         "
       >
         {theme === 'light' ? (
           <Image
-            className="active-theme"
+            className="active-theme transition
+              duration-300
+              hover:rotate-180
+            "
             width={20}
             height={20}
             src="/assets/icons/sun.svg"
@@ -41,7 +44,10 @@ const Theme = () => {
           />
         ) : (
           <Image
-            className="active-theme"
+            className="active-theme transition
+              duration-300
+              hover:rotate-180
+            "
             width={20}
             height={20}
             src="/assets/icons/moon.svg"
