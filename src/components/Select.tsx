@@ -12,10 +12,10 @@ import {
 const SelectMenu = () => {
   return (
     <Select>
-      <SelectTrigger className="">
-        <SelectValue placeholder="Chose a Category" />
+      <SelectTrigger>
+        <SelectValue placeholder="Select a category" />
       </SelectTrigger>
-      <SelectContent>
+      <SelectContent className="text-dark200_light800">
         <SelectGroup>
           <SelectLabel>Category</SelectLabel>
           <SelectItem value="phones">Phones</SelectItem>

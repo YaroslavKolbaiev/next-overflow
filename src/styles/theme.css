@@ -99,6 +99,10 @@
     @apply text-light-400 dark:text-light-500 !important;
   }
 
+  .formText-gray600_gray400 {
+    @apply text-gray-600 dark:text-gray-400;
+  }
+
   .light-border {
     @apply border-light-800 dark:border-dark-300;
   }

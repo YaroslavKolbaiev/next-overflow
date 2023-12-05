@@ -1,6 +1,9 @@
+'use client';
+
 import React from 'react';
 import Pagination from './Pagination';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 interface TableProps {
   name_title: string;
@@ -12,6 +15,7 @@ interface TableProps {
 type Props = { head: TableProps; body: TableProps; addLink: string };
 
 const Table = ({ head, body, addLink }: Props) => {
+  const currentPath = usePathname();
   return (
     <div
       className="background-light900_dark200
@@ -63,7 +67,8 @@ const Table = ({ head, body, addLink }: Props) => {
               <td className="px-2 py-3 md:px-3">{body.createdAt_price}</td>
               <td className="px-2 py-3 md:px-3">{body.status_stock}</td>
               <td className="px-2 py-3 text-center md:px-3">
-                <button
+                <Link
+                  href={`${currentPath}/id-1`}
                   className="btn-hover_active
                     rounded-md
                     border
@@ -75,7 +80,7 @@ const Table = ({ head, body, addLink }: Props) => {
                   "
                 >
                   View
-                </button>
+                </Link>
               </td>
               <td className="px-2 py-3 text-center md:px-3">
                 <button

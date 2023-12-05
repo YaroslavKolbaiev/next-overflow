@@ -20,7 +20,7 @@ const Theme = () => {
   });
 
   return (
-    <div className="relative flex" ref={menuRef}>
+    <div className="relative z-20 flex" ref={menuRef}>
       <button
         onClick={dropDownHandler}
         type="button"
