@@ -6,6 +6,17 @@ export interface SidebarLink {
   label: string;
 }
 
+export interface User {
+  _id: string;
+  userName: string;
+  email: string;
+  password: string;
+  createdAt: string;
+  phone: string;
+  avatarImage: string;
+  adress: string;
+}
+
 export interface Job {
   id?: string;
   employer_name?: string;

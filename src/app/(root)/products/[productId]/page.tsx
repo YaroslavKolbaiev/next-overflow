@@ -1,5 +1,5 @@
 import SelectMenu from '@/components/Select';
-import UserFormInput from '@/components/UserFormInput';
+import FormInput from '@/components/User-ProductFormInput';
 import React from 'react';
 
 type Props = {
@@ -15,12 +15,12 @@ const ProductPage = ({ params: { productId } }: Props) => {
         <div className="group relative mb-5 w-full">
           <SelectMenu />
         </div>
-        <UserFormInput value="Title" placeholder="Iphone, Sumsung ..." />
-        <UserFormInput value="Price" placeholder="500 USD" />
-        <UserFormInput value="Stock" placeholder="20" />
+        <FormInput value="Title" placeholder="Iphone, Sumsung ..." />
+        <FormInput value="Price" placeholder="500 USD" />
+        <FormInput value="Stock" placeholder="20" />
         <div className="mb-5">
           <label
-            htmlFor="Address"
+            htmlFor="Description"
             className="formText-gray600_gray400
             mb-2
             block
@@ -28,10 +28,10 @@ const ProductPage = ({ params: { productId } }: Props) => {
             font-medium
           "
           >
-            Adress
+            Description
           </label>
           <textarea
-            id="Address"
+            id="Description"
             className="border-gray300_dark600
             text-dark200_light800
             block

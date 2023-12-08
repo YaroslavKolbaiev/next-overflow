@@ -15,7 +15,7 @@ const MobileNav = () => {
   const currentPath = usePathname();
   return (
     <Sheet>
-      <SheetTrigger asChild>
+      <SheetTrigger>
         <FiMenu
           className="text-dark200_light800
             h-5

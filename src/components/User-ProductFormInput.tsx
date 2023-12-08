@@ -5,7 +5,7 @@ type Props = {
   placeholder: string;
 };
 
-const UserFormInput = ({ value, placeholder }: Props) => {
+const FormInput = ({ value, placeholder }: Props) => {
   return (
     <div className="mb-5">
       <label
@@ -44,4 +44,4 @@ const UserFormInput = ({ value, placeholder }: Props) => {
   );
 };
 
-export default UserFormInput;
+export default FormInput;
