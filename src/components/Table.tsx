@@ -30,6 +30,7 @@ const Table = ({ head, body, addLink }: Props) => {
           href={addLink}
           className="primary-gradient
           btn-hover_active
+          float-left
           rounded-md
           p-2
           text-sm
