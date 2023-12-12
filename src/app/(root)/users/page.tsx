@@ -1,17 +1,15 @@
 import { fetchUsers } from '@/lib/data';
 import React from 'react';
-import Link from 'next/link';
 import Pagination from '@/components/Pagination';
+import TableHead from '@/components/TableHead';
+import TableButtons from '@/components/TableButtons';
+import AddNewBtn from '@/components/AddNewBtn';
+import { converDate } from '@/lib/utils';
+import { SearchParamsProps } from '@/types';
 
-const Users = async () => {
-  const users = await fetchUsers();
-
-  if (!users) {
-    console.log('No users found');
-    return;
-  }
-
-  console.log('[USERS]:', users);
+const Users = async ({ searchParams }: SearchParamsProps) => {
+  const search = searchParams.search || '';
+  const users = await fetchUsers(search);
   return (
     <div
       className="background-light900_dark200
@@ -22,79 +20,34 @@ const Users = async () => {
       "
     >
       <div className="overflow-x-auto">
-        <Link
-          href="/users/add"
-          className="primary-gradient
-          btn-hover_active
-          float-left
-          rounded-md
-          p-2
-          text-sm
-          text-light-800
-          sm:float-right
-        "
+        <AddNewBtn href="/users/add" />
+        <table
+          className="text-dark200_light800
+            w-full
+            text-left
+            text-xs
+            rtl:text-right
+            md:text-sm
+          "
         >
-          Add New
-        </Link>
-        <table className="text-dark200_light800 w-full text-left text-xs rtl:text-right md:text-sm">
-          <thead className="uppercase">
-            <tr>
-              <th scope="col" className="px-2 py-3 md:px-3">
-                Name
-              </th>
-              <th scope="col" className="px-2 py-3 md:px-3">
-                E-Mail
-              </th>
-              <th scope="col" className="px-2 py-3 md:px-3">
-                Adress
-              </th>
-              <th scope="col" className="px-2 py-3 md:px-3">
-                Status
-              </th>
-              <th scope="col" className="px-2 py-3 md:px-3" />
-              <th scope="col" className="px-2 py-3 md:px-3" />
-            </tr>
-          </thead>
+          <TableHead
+            head={{
+              name_title: 'Name',
+              mail_description: 'E-Mail',
+              adress_price: 'Created At',
+              phone_stock: 'Phone',
+            }}
+          />
           <tbody className="">
-            {users.map(({ _id, userName, email, adress, phone }) => (
+            {users.map(({ _id, userName, email, createdAt, phone }) => (
               <tr key={_id}>
                 <th scope="row" className="px-2 py-3 md:px-3">
                   {userName}
                 </th>
                 <td className="px-2 py-3 md:px-3">{email}</td>
-                <td className="px-2 py-3 md:px-3">{adress}</td>
+                <td className="px-2 py-3 md:px-3">{converDate(createdAt)}</td>
                 <td className="px-2 py-3 md:px-3">{phone}</td>
-                <td className="px-2 py-3 text-center md:px-3">
-                  <Link
-                    href={`/users/${_id}`}
-                    className="btn-hover_active
-                    rounded-md
-                    border
-                    border-green-600
-                    bg-green-500
-                    px-2
-                    py-1
-                    text-light-800
-                  "
-                  >
-                    View
-                  </Link>
-                </td>
-                <td className="px-2 py-3 text-center md:px-3">
-                  <button
-                    className="btn-hover_active
-                    rounded-md
-                    border
-                    border-red-600
-                    bg-red-500
-                    px-2
-                    py-1
-                    text-light-800
-                  "
-                  >
-                    Delete
-                  </button>
-                </td>
+                <TableButtons href={`/users/${_id}`} />
               </tr>
             ))}
           </tbody>

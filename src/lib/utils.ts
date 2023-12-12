@@ -17,8 +17,15 @@ export const connectToMongo = async () => {
     if (connection) return;
     const db = await mongoose.connect(process.env.MONGODB_URI);
     connection = db.connection.readyState;
-    console.log('[Connection]', connection);
   } catch (error: any) {
     throw new Error(error.message);
   }
+};
+
+export const converDate = (date: string) => {
+  return new Date(date).toLocaleDateString('en-US', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  });
 };

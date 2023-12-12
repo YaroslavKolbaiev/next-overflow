@@ -13,7 +13,6 @@ export interface User {
   password: string;
   createdAt: string;
   phone: string;
-  avatarImage: string;
   adress: string;
 }
 

@@ -1,7 +1,29 @@
+'use client';
+
 import React from 'react';
 import { BiSearch } from 'react-icons/bi';
+import { usePathname, useSearchParams, useRouter } from 'next/navigation';
+import { useDebouncedCallback } from 'use-debounce';
 
 const SearchBar = () => {
+  const searchParams = useSearchParams();
+  const path = usePathname().split('/')[1];
+  const { replace } = useRouter();
+
+  const handleSearch = useDebouncedCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const params = new URLSearchParams(searchParams);
+
+      if (e.target.value) {
+        params.set('search', e.target.value);
+      } else {
+        params.delete('search');
+      }
+
+      replace(`${path}?${params}`);
+    },
+    500
+  );
   return (
     <>
       <div className="relative hidden md:block">
@@ -11,6 +33,7 @@ const SearchBar = () => {
           </button>
         </div>
         <input
+          onChange={handleSearch}
           type="search"
           id="default-search"
           className="border-gray300_dark600
@@ -27,7 +50,7 @@ const SearchBar = () => {
           focus:ring-2
           focus:ring-primary-500
         "
-          placeholder="Search"
+          placeholder={path === '' ? 'Search' : `Search in ${path}`}
         />
       </div>
       <button>

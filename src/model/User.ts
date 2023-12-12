@@ -26,10 +26,6 @@ const userSchema = new Schema(
     phone: {
       type: String,
     },
-    avatarImage: {
-      type: String,
-      default: '',
-    },
   },
   { timestamps: true }
 );
