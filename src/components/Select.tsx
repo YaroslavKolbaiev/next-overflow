@@ -8,6 +8,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { ProductCategory } from '@/types/enums';
 
 const SelectMenu = () => {
   return (
@@ -18,10 +19,11 @@ const SelectMenu = () => {
       <SelectContent className="text-dark200_light800">
         <SelectGroup>
           <SelectLabel>Category</SelectLabel>
-          <SelectItem value="phones">Phones</SelectItem>
-          <SelectItem value="tv-sets">TV-Sets</SelectItem>
-          <SelectItem value="speakers">Speakers</SelectItem>
-          <SelectItem value="laptops">Laptops</SelectItem>
+          {Object.values(ProductCategory).map((category) => (
+            <SelectItem key={category} value={category}>
+              {category}
+            </SelectItem>
+          ))}
         </SelectGroup>
       </SelectContent>
     </Select>

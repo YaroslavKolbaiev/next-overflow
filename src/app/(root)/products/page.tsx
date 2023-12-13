@@ -1,19 +1,17 @@
 import AddNewBtn from '@/components/AddNewBtn';
 import Pagination from '@/components/Pagination';
-import TableButtons from '@/components/TableButtons';
+import ProductsTable from '@/components/ProductsTable';
 import TableHead from '@/components/TableHead';
-import React from 'react';
+import TableSkeleton from '@/components/TableSkeleton';
+import { fetchProducts } from '@/lib/data';
+import { ITEMS_PER_PAGE } from '@/lib/utils';
+import { SearchParamsProps } from '@/types';
+import React, { Suspense } from 'react';
 
-const page = () => {
-  const products = [
-    {
-      _id: 'Id-1',
-      title: 'title1',
-      desc: 'desc1',
-      price: 'price1',
-      stock: 'stock1',
-    },
-  ];
+const Products = async ({ searchParams }: SearchParamsProps) => {
+  const search = searchParams.search || '';
+  const page = searchParams.page || '1';
+  const { productCount } = await fetchProducts(search, +page);
   return (
     <div
       className="background-light900_dark200
@@ -38,28 +36,21 @@ const page = () => {
             head={{
               name_title: 'Title',
               mail_description: 'Description',
-              adress_price: 'Price',
+              createdAt_price: 'Price',
               phone_stock: 'Stock',
+              category: 'Category',
             }}
           />
-          <tbody className="">
-            {products.map(({ _id, title, desc, price, stock }) => (
-              <tr key={_id}>
-                <th scope="row" className="px-2 py-3 md:px-3">
-                  {title}
-                </th>
-                <td className="px-2 py-3 md:px-3">{desc}</td>
-                <td className="px-2 py-3 md:px-3">{price}</td>
-                <td className="px-2 py-3 md:px-3">{stock}</td>
-                <TableButtons href={`/users/${_id}`} />
-              </tr>
-            ))}
-          </tbody>
+          <Suspense key={page + search} fallback={<TableSkeleton />}>
+            <ProductsTable search={search} page={page} />
+          </Suspense>
         </table>
-        <Pagination />
+        {productCount > ITEMS_PER_PAGE && (
+          <Pagination totalItems={productCount} />
+        )}
       </div>
     </div>
   );
 };
 
-export default page;
+export default Products;

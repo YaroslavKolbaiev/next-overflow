@@ -2,6 +2,7 @@
 
 import { ITEMS_PER_PAGE } from '@/lib/utils';
 import { PaginationProps } from '@/types';
+import { PageType } from '@/types/enums';
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 
@@ -49,12 +50,6 @@ function PaginationLink({
   disableCondition,
 }: PaginationProps) {
   const pathName = usePathname();
-
-  enum PageType {
-    PREVIOUS = 'Previous',
-    NEXT = 'Next',
-    DOTS = '...',
-  }
 
   switch (pageName) {
     case PageType.NEXT:

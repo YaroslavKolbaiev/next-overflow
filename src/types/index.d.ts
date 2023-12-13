@@ -1,4 +1,5 @@
 import { BADGE_CRITERIA } from '@/constants';
+import { ProductCategory } from './enums';
 
 export interface SidebarLink {
   imgURL: string;
@@ -14,6 +15,17 @@ export interface User {
   createdAt: string;
   phone: string;
   adress: string;
+}
+
+export interface Product {
+  _id: string;
+  userId: string;
+  title: string;
+  description: string;
+  price: number;
+  createdAt: string;
+  stock: number;
+  category: ProductCategory;
 }
 
 export interface ParamsProps {
@@ -34,6 +46,11 @@ export interface FetchUserResponse {
   usersCount: number;
 }
 
+export interface FetchProductsResponse {
+  products: Product[];
+  productCount: number;
+}
+
 export interface PaginationProps {
   pageName: string;
   pageValue: string;
@@ -42,9 +59,10 @@ export interface PaginationProps {
 
 export interface TableHeadProps {
   head: {
-    name_title: string;
-    mail_description: string;
-    adress_price: string;
-    phone_stock: string;
+    name_title: 'Name' | 'Title';
+    mail_description: 'E-Mail' | 'Description';
+    createdAt_price: 'Created At' | 'Price';
+    phone_stock: 'Phone' | 'Stock';
+    category?: 'Category';
   };
 }
