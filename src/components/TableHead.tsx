@@ -1,13 +1,5 @@
+import { TableHeadProps } from '@/types';
 import React from 'react';
-
-interface TableHeadProps {
-  head: {
-    name_title: string;
-    mail_description: string;
-    adress_price: string;
-    phone_stock: string;
-  };
-}
 
 export default function TableHead({ head }: TableHeadProps) {
   return (

@@ -1,19 +1,16 @@
 'use client';
 
+import { ITEMS_PER_PAGE } from '@/lib/utils';
+import { PaginationProps } from '@/types';
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 
-type Props = {
-  totalItems: number;
-  itemsPerPage: number;
-};
-
-function Pagination({ totalItems, itemsPerPage }: Props) {
+function Pagination({ totalItems }: { totalItems: number }) {
   const searchParams = useSearchParams();
 
   const page = searchParams.get('page') || '1';
 
-  const totalPages = Math.ceil(totalItems / itemsPerPage);
+  const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
 
   const pageNumbers = getVisiblePages(+page, totalPages);
 
@@ -46,24 +43,18 @@ function Pagination({ totalItems, itemsPerPage }: Props) {
   );
 }
 
-interface PaginationProps {
-  pageName: string;
-  pageValue: string;
-  disableCondition: boolean;
-}
-
-export enum PageType {
-  PREVIOUS = 'Previous',
-  NEXT = 'Next',
-  DOTS = '...',
-}
-
 function PaginationLink({
   pageName,
   pageValue,
   disableCondition,
 }: PaginationProps) {
   const pathName = usePathname();
+
+  enum PageType {
+    PREVIOUS = 'Previous',
+    NEXT = 'Next',
+    DOTS = '...',
+  }
 
   switch (pageName) {
     case PageType.NEXT:

@@ -4,10 +4,6 @@
 
 @import url('./theme.css');
 
-/* body {
-  transition: all 0.25s linear;
-} */
-
 @layer utilities {
   .flex-center {
     @apply flex justify-center items-center;
@@ -23,18 +19,6 @@
 
   .card-wrapper {
     @apply bg-light-900 dark:dark-gradient shadow-light-100 dark:shadow-dark-100;
-  }
-
-  .btn {
-    @apply bg-light-800 dark:bg-dark-300 !important;
-  }
-
-  .btn-secondary {
-    @apply bg-light-800 dark:bg-dark-400 !important;
-  }
-
-  .btn-tertiary {
-    @apply bg-light-700 dark:bg-dark-300 !important;
   }
 
   .btn-hover_active {
@@ -56,21 +40,17 @@
       rgba(19, 22, 28, 0.7) 100%
     );
   }
-
-  .tab {
-    @apply min-h-full dark:bg-dark-400 bg-light-800 text-light-500 dark:data-[state=active]:bg-dark-300 data-[state=active]:bg-primary-100 data-[state=active]:text-primary-500 !important;
-  }
 }
 
 .pagination-link {
   @apply text-gray-500
     text-center
-    bg-white border
+    border
     transition
     border-gray-300
     hover:bg-gray-100
     hover:text-gray-700
-    dark:bg-gray-800
+    dark:bg-dark-300
     dark:border-gray-700
     dark:text-gray-400
     dark:hover:bg-gray-700
@@ -78,7 +58,7 @@
 }
 
 .active-link {
-  @apply bg-light-800 dark:dark-gradient;
+  @apply bg-light-700 dark:bg-dark-400;
 }
 
 .no-focus {

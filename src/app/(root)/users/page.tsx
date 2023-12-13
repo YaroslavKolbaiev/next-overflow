@@ -4,7 +4,7 @@ import Pagination from '@/components/Pagination';
 import TableHead from '@/components/TableHead';
 import TableButtons from '@/components/TableButtons';
 import AddNewBtn from '@/components/AddNewBtn';
-import { converDate } from '@/lib/utils';
+import { ITEMS_PER_PAGE, converDate } from '@/lib/utils';
 import { SearchParamsProps } from '@/types';
 
 const Users = async ({ searchParams }: SearchParamsProps) => {
@@ -53,9 +53,7 @@ const Users = async ({ searchParams }: SearchParamsProps) => {
             ))}
           </tbody>
         </table>
-        {usersCount > 2 && (
-          <Pagination totalItems={usersCount} itemsPerPage={2} />
-        )}
+        {usersCount > ITEMS_PER_PAGE && <Pagination totalItems={usersCount} />}
       </div>
     </div>
   );

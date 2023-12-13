@@ -1,6 +1,6 @@
 import { FetchUserResponse } from '@/types';
 import { modelUser } from '../model/User';
-import { connectToMongo } from './utils';
+import { ITEMS_PER_PAGE, connectToMongo } from './utils';
 
 export const fetchUsers = async (
   search: string,
@@ -10,14 +10,18 @@ export const fetchUsers = async (
   const regex = new RegExp(search, 'i');
   try {
     connectToMongo();
-    const usersCount = await modelUser.countDocuments();
+
+    const usersCount = await modelUser
+      .find({ userName: { $regex: regex } })
+      .countDocuments();
+
     const users = await modelUser
       .find({ userName: { $regex: regex } })
-      .limit(2)
-      .skip(2 * (page - 1));
+      .limit(ITEMS_PER_PAGE)
+      .skip(ITEMS_PER_PAGE * (page - 1));
+
     return { users, usersCount };
-  } catch (error) {
-    console.log(error);
-    return { users: [], usersCount: 0 };
+  } catch (error: any) {
+    throw new Error(error.message);
   }
 };

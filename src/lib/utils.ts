@@ -29,3 +29,5 @@ export const converDate = (date: string) => {
     year: 'numeric',
   });
 };
+
+export const ITEMS_PER_PAGE = 5;
