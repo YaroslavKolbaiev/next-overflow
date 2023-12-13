@@ -37,19 +37,19 @@ const SearchBar = () => {
           type="search"
           id="default-search"
           className="border-gray300_dark600
-          background-light800_dark400
-          text-dark100_light900
-          placeholder
-          w-full
-          rounded-lg
-          border
-          p-2
-          ps-10
-          text-sm
-          focus:outline-none
-          focus:ring-2
-          focus:ring-primary-500
-        "
+            background-light800_dark400
+            text-dark100_light900
+            placeholder
+            w-full
+            rounded-lg
+            border
+            p-2
+            ps-10
+            text-sm
+            focus:outline-none
+            focus:ring-2
+            focus:ring-primary-500
+          "
           placeholder={path === '' ? 'Search' : `Search in ${path}`}
         />
       </div>

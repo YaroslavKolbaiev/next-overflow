@@ -9,7 +9,8 @@ import { SearchParamsProps } from '@/types';
 
 const Users = async ({ searchParams }: SearchParamsProps) => {
   const search = searchParams.search || '';
-  const users = await fetchUsers(search);
+  const page = searchParams.page || '1';
+  const { users, usersCount } = await fetchUsers(search, +page);
   return (
     <div
       className="background-light900_dark200
@@ -52,7 +53,9 @@ const Users = async ({ searchParams }: SearchParamsProps) => {
             ))}
           </tbody>
         </table>
-        <Pagination />
+        {usersCount > 2 && (
+          <Pagination totalItems={usersCount} itemsPerPage={2} />
+        )}
       </div>
     </div>
   );

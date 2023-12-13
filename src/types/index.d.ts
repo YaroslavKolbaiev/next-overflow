@@ -55,4 +55,15 @@ export interface BadgeCounts {
   BRONZE: number;
 }
 
+export interface FetchUserResponse {
+  users: User[];
+  usersCount: number;
+}
+
+export enum PageType {
+  PREVIOUS = 'Previous',
+  NEXT = 'Next',
+  DOTS = '...',
+}
+
 export type BadgeCriteriaType = keyof typeof BADGE_CRITERIA;
