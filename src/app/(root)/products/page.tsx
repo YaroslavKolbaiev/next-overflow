@@ -3,7 +3,7 @@ import Pagination from '@/components/Pagination';
 import ProductsTable from '@/components/ProductsTable';
 import TableHead from '@/components/TableHead';
 import TableSkeleton from '@/components/TableSkeleton';
-import { fetchProducts } from '@/lib/data';
+import { fetchCount, fetchProducts } from '@/lib/data';
 import { ITEMS_PER_PAGE } from '@/lib/utils';
 import { SearchParamsProps } from '@/types';
 import React, { Suspense } from 'react';
@@ -11,10 +11,11 @@ import React, { Suspense } from 'react';
 const Products = async ({ searchParams }: SearchParamsProps) => {
   const search = searchParams.search || '';
   const page = searchParams.page || '1';
-  const { productCount } = await fetchProducts(search, +page);
+  const productCount = await fetchCount(search, 'products');
   return (
     <div
       className="background-light900_dark200
+        h-full
         w-[calc(100vw-1rem)]
         rounded-md
         p-4

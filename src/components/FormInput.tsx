@@ -38,6 +38,7 @@ const FormInput = ({ value }: { value: string }) => {
           -translate-y-6
           scale-75
           text-sm
+          capitalize
           duration-300
           peer-placeholder-shown:translate-y-0
           peer-placeholder-shown:scale-100

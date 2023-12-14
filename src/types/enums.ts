@@ -11,3 +11,11 @@ export enum PageType {
   NEXT = 'Next',
   DOTS = '...',
 }
+
+export enum AddUserInput {
+  USER_NAME = 'userName',
+  EMAIL = 'email',
+  PASSWORD = 'password',
+  PHONE = 'phone',
+  ADRESS = 'adress',
+}

@@ -11,17 +11,13 @@ export const fetchUsers = async (
   const regex = new RegExp(search, 'i');
   try {
     connectToMongo();
-
-    const usersCount = await modelUser
-      .find({ userName: { $regex: regex } })
-      .countDocuments();
-
+    // await getData('Hello');
     const users = await modelUser
       .find({ userName: { $regex: regex } })
       .limit(ITEMS_PER_PAGE)
       .skip(ITEMS_PER_PAGE * (page - 1));
 
-    return { users, usersCount };
+    return { users };
   } catch (error: any) {
     throw new Error(error.message);
   }
@@ -36,16 +32,38 @@ export const fetchProducts = async (
   try {
     connectToMongo();
 
-    const productCount = await modelProduct
-      .find({ title: { $regex: regex } })
-      .countDocuments();
-
     const products = await modelProduct
       .find({ title: { $regex: regex } })
       .limit(ITEMS_PER_PAGE)
       .skip(ITEMS_PER_PAGE * (page - 1));
 
-    return { products, productCount };
+    return { products };
+  } catch (error: any) {
+    throw new Error(error.message);
+  }
+};
+
+export const fetchCount = async (
+  search: string,
+  param: 'users' | 'products'
+): Promise<number> => {
+  // regex expression to search for users case insensitive
+  const regex = new RegExp(search, 'i');
+  let count: number;
+
+  try {
+    connectToMongo();
+    if (param === 'users') {
+      count = await modelUser
+        .find({ userName: { $regex: regex } })
+        .countDocuments();
+      return count;
+    }
+
+    count = await modelProduct
+      .find({ title: { $regex: regex } })
+      .countDocuments();
+    return count;
   } catch (error: any) {
     throw new Error(error.message);
   }

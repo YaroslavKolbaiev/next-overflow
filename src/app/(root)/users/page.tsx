@@ -1,4 +1,4 @@
-import { fetchUsers } from '@/lib/data';
+import { fetchCount, fetchUsers } from '@/lib/data';
 import React, { Suspense } from 'react';
 import Pagination from '@/components/Pagination';
 import TableHead from '@/components/TableHead';
@@ -11,10 +11,11 @@ import TableSkeleton from '@/components/TableSkeleton';
 const Users = async ({ searchParams }: SearchParamsProps) => {
   const search = searchParams.search || '';
   const page = searchParams.page || '1';
-  const { usersCount } = await fetchUsers(search, +page);
+  const usersCount = await fetchCount(search, 'users');
   return (
     <div
       className="background-light900_dark200
+        h-full
         w-[calc(100vw-1rem)]
         rounded-md
         p-4

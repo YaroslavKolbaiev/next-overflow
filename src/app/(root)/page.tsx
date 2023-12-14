@@ -4,7 +4,7 @@ import Transactions from '@/components/Transactions';
 
 export default function Home() {
   return (
-    <div>
+    <>
       <div className="mb-2 flex flex-col justify-between gap-4 sm:flex-row">
         <Card />
         <Card />
@@ -12,6 +12,6 @@ export default function Home() {
       </div>
       <Transactions />
       <Chart />
-    </div>
+    </>
   );
 }

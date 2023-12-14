@@ -42,7 +42,7 @@ const Navbar = () => {
         <div className="flex-between gap-5">
           <Theme />
           <ClerkLoading>
-            <div className="h-10 w-10 rounded-full bg-slate-400">S_I</div>
+            <div className="h-10 w-10 rounded-full bg-slate-400" />
           </ClerkLoading>
           <SignedIn>
             <UserButton

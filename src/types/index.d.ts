@@ -43,12 +43,10 @@ export interface URLProps {
 
 export interface FetchUserResponse {
   users: User[];
-  usersCount: number;
 }
 
 export interface FetchProductsResponse {
   products: Product[];
-  productCount: number;
 }
 
 export interface PaginationProps {
