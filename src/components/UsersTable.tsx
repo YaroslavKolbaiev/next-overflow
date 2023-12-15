@@ -21,7 +21,7 @@ const UsersTabe = async ({
           <td className="px-2 py-3 md:px-3">{email}</td>
           <td className="px-2 py-3 md:px-3">{converDate(createdAt)}</td>
           <td className="px-2 py-3 md:px-3">{phone}</td>
-          <TableButtons href={`/users/${_id}`} />
+          <TableButtons id={_id} href={`/users/${_id}`} />
         </tr>
       ))}
     </tbody>

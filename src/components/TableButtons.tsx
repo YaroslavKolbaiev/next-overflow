@@ -1,9 +1,15 @@
+'use client';
+
+import { deleteProduct } from '@/lib/actions';
+import { TableButtonsProps } from '@/types';
 import Link from 'next/link';
 import React from 'react';
 import { FaRegEye } from 'react-icons/fa';
 import { ImCross } from 'react-icons/im';
+import { useFormStatus } from 'react-dom';
 
-const TableButtons = ({ href }: { href: string }) => {
+const TableButtons = ({ href, id }: TableButtonsProps) => {
+  const { pending } = useFormStatus();
   return (
     <>
       <td className="px-2">
@@ -12,9 +18,12 @@ const TableButtons = ({ href }: { href: string }) => {
         </Link>
       </td>
       <td className="px-2">
-        <Link href="#" className="flex-center">
-          <ImCross className="btn-hover_active h-4 w-4 text-red-700" />
-        </Link>
+        <form action={deleteProduct}>
+          <input type="hidden" name="id" value={id} />
+          <button aria-disabled={pending} className="flex-center">
+            <ImCross className="btn-hover_active h-4 w-4 text-red-700" />
+          </button>
+        </form>
       </td>
     </>
   );

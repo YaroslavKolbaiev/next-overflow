@@ -21,7 +21,7 @@ const ProductsTable = async ({
           <td className="px-2 py-3 md:px-3">{category}</td>
           <td className="px-2 py-3 md:px-3">{price}</td>
           <td className="px-2 py-3 md:px-3">{stock}</td>
-          <TableButtons href={`/products/${_id}`} />
+          <TableButtons id={_id} href={`/products/${_id}`} />
         </tr>
       ))}
     </tbody>

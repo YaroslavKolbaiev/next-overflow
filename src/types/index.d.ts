@@ -68,3 +68,8 @@ export interface FormInputProps {
   value: string;
   type: string;
 }
+
+export interface TableButtonsProps {
+  href: string;
+  id: string;
+}
