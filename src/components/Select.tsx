@@ -8,11 +8,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { ProductCategory } from '@/types/enums';
+import { AddProductInput, ProductCategory } from '@/types/enums';
 
 const SelectMenu = () => {
   return (
-    <Select>
+    <Select name={AddProductInput.CATEGORY}>
       <SelectTrigger>
         <SelectValue placeholder="Select a category" />
       </SelectTrigger>

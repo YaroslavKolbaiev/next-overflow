@@ -1,11 +1,13 @@
+'use server';
+
 import { modelUser } from '@/model/User';
 import { connectToMongo, validateEmail, validatePassword } from './utils';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import bcrypt from 'bcrypt';
+import { modelProduct } from '@/model/Product';
 
 export const addUser = async (formData: FormData) => {
-  'use server';
   const { userName, email, password, phone, adress } =
     Object.fromEntries(formData);
 
@@ -48,4 +50,28 @@ export const addUser = async (formData: FormData) => {
 
   revalidatePath('/users');
   redirect('/users');
+};
+
+export const addProduct = async (formData: FormData) => {
+  const { title, description, price, stock, category } =
+    Object.fromEntries(formData);
+
+  console.log(title, description, price, stock, category);
+
+  try {
+    connectToMongo();
+    const product = new modelProduct({
+      title,
+      description,
+      price,
+      stock,
+      category,
+    });
+    await product.save();
+  } catch (error) {
+    throw new Error('Failed to add product');
+  }
+
+  revalidatePath('/products');
+  redirect('/products');
 };

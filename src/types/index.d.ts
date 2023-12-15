@@ -19,7 +19,6 @@ export interface User {
 
 export interface Product {
   _id: string;
-  userId: string;
   title: string;
   description: string;
   price: number;
@@ -63,4 +62,9 @@ export interface TableHeadProps {
     phone_stock: 'Phone' | 'Stock';
     category?: 'Category';
   };
+}
+
+export interface FormInputProps {
+  value: string;
+  type: string;
 }

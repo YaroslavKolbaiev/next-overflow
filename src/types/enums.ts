@@ -19,3 +19,11 @@ export enum AddUserInput {
   PHONE = 'phone',
   ADRESS = 'adress',
 }
+
+export enum AddProductInput {
+  PRODUCT_TITLE = 'title',
+  DESCRIPTION = 'description',
+  PRICE = 'price',
+  STOCK = 'stock',
+  CATEGORY = 'category',
+}

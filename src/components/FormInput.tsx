@@ -1,11 +1,12 @@
+import { FormInputProps } from '@/types';
 import React from 'react';
 
-const FormInput = ({ value }: { value: string }) => {
+const FormInput = ({ value, type }: FormInputProps) => {
   return (
     <div className="group relative z-0 mb-5 w-full">
       <input
         maxLength={50}
-        type={value === 'password' ? 'password' : 'text'}
+        type={type}
         name={value}
         id={value}
         className="text-dark200_light800

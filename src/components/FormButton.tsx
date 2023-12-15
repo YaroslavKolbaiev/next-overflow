@@ -1,9 +1,14 @@
+'use client';
+
 import React from 'react';
+import { useFormStatus } from 'react-dom';
 
 const FormButton = () => {
+  const { pending } = useFormStatus();
   return (
     <button
       type="submit"
+      aria-disabled={pending}
       className="primary-gradient
         btn-hover_active
         rounded-md
@@ -14,7 +19,7 @@ const FormButton = () => {
         max-md:w-full
       "
     >
-      Submit
+      {pending ? 'Loading...' : 'Submit'}
     </button>
   );
 };
