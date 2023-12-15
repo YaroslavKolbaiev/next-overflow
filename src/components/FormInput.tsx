@@ -5,7 +5,7 @@ const FormInput = ({ value }: { value: string }) => {
     <div className="group relative z-0 mb-5 w-full">
       <input
         maxLength={50}
-        type={value === 'Password' ? 'password' : 'text'}
+        type={value === 'password' ? 'password' : 'text'}
         name={value}
         id={value}
         className="text-dark200_light800
