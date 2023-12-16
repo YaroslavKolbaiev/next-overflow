@@ -12,7 +12,7 @@ export enum PageType {
   DOTS = '...',
 }
 
-export enum AddUserInput {
+export enum UserInput {
   USER_NAME = 'userName',
   EMAIL = 'email',
   PASSWORD = 'password',
@@ -20,7 +20,7 @@ export enum AddUserInput {
   ADRESS = 'adress',
 }
 
-export enum AddProductInput {
+export enum ProductInput {
   PRODUCT_TITLE = 'title',
   DESCRIPTION = 'description',
   PRICE = 'price',

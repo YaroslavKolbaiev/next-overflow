@@ -1,5 +1,5 @@
 import { BADGE_CRITERIA } from '@/constants';
-import { ProductCategory } from './enums';
+import { ProductInput, UserInput, ProductCategory } from './enums';
 
 export interface SidebarLink {
   imgURL: string;
@@ -65,7 +65,7 @@ export interface TableHeadProps {
 }
 
 export interface FormInputProps {
-  value: string;
+  value: ProductInput | UserInput;
   type: string;
 }
 

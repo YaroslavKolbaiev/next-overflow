@@ -1,23 +1,25 @@
-import SelectMenu from '@/components/Select';
-import FormInput from '@/components/User-ProductFormInput';
+import FormButton from '@/components/FormButton';
+import FormInput from '@/components/FormInput';
+import SelectCategoryMenu from '@/components/SelectCategory';
+import { editProduct } from '@/lib/actions';
+import { ProductInput } from '@/types/enums';
 import React from 'react';
 
-type Props = {
-  params: {
-    productId: string;
-  };
-};
+// continue from here !!!!!!!!!!!!
+// show values from product instead of input
+// change FormInput value prop to name prop
+// maybe consider to change FormInput to ProdFormInput with value from DB
 
-const ProductPage = ({ params: { productId } }: Props) => {
+const ProductPage = () => {
   return (
-    <div className="background-light900_dark200 rounded-md p-4">
-      <div className="mx-auto max-w-md">
+    <div className="background-light900_dark200 h-full rounded-md p-4">
+      <form action={editProduct} className="mx-auto max-w-md">
         <div className="group relative mb-5 w-full">
-          <SelectMenu />
+          <SelectCategoryMenu />
         </div>
-        <FormInput value="Title" placeholder="Iphone, Sumsung ..." />
-        <FormInput value="Price" placeholder="500 USD" />
-        <FormInput value="Stock" placeholder="20" />
+        <FormInput value={ProductInput.PRODUCT_TITLE} type="text" />
+        <FormInput value={ProductInput.PRICE} type="number" />
+        <FormInput value={ProductInput.STOCK} type="number" />
         <div className="mb-5">
           <label
             htmlFor="Description"
@@ -26,11 +28,12 @@ const ProductPage = ({ params: { productId } }: Props) => {
               block
               text-sm
               font-medium
-          "
+            "
           >
             Description
           </label>
           <textarea
+            name={ProductInput.DESCRIPTION}
             id="Description"
             className="border-gray300_dark600
               text-dark200_light800
@@ -50,19 +53,8 @@ const ProductPage = ({ params: { productId } }: Props) => {
             "
           />
         </div>
-        <button
-          className="primary-gradient
-            btn-hover_active
-            w-full
-            rounded-md
-            p-2
-            text-light-800
-          "
-          type="button"
-        >
-          Update
-        </button>
-      </div>
+        <FormButton title="Update" />
+      </form>
     </div>
   );
 };

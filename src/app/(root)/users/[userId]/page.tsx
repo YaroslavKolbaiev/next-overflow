@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
-import FormInput from '@/components/User-ProductFormInput';
+import FormInput from '@/components/FormInput';
+import { UserInput } from '@/types/enums';
 
 type Props = {
   params: {
@@ -27,10 +28,10 @@ const UserPage = ({ params: { userId } }: Props) => {
         <p className="text-dark200_light800">ID: {userId}</p>
       </div>
       <div className="background-light900_dark200 rounded-md p-4 md:col-span-4">
-        <FormInput value="Username" placeholder="Enter username" />
-        <FormInput value="Email" placeholder="E-mail" />
-        <FormInput value="Password" placeholder="Enter Password" />
-        <FormInput value="Phone" placeholder="Phone Number" />
+        <FormInput value={UserInput.USER_NAME} type="text" />
+        <FormInput value={UserInput.EMAIL} type="email" />
+        <FormInput value={UserInput.PASSWORD} type="password" />
+        <FormInput value={UserInput.PHONE} type="text" />
         <div className="mb-5">
           <label
             htmlFor="Address"

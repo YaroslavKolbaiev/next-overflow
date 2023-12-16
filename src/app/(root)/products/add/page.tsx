@@ -1,8 +1,8 @@
 import FormButton from '@/components/FormButton';
 import FormInput from '@/components/FormInput';
-import SelectMenu from '@/components/Select';
+import SelectCategoryMenu from '@/components/SelectCategory';
 import { addProduct } from '@/lib/actions';
-import { AddProductInput } from '@/types/enums';
+import { ProductInput } from '@/types/enums';
 import React from 'react';
 
 const AddProduct = () => {
@@ -11,16 +11,16 @@ const AddProduct = () => {
       <form action={addProduct} className="mx-auto max-w-md">
         <div className="mt-5 grid md:grid-cols-2 md:gap-6">
           <div className="group relative mb-5 w-full">
-            <SelectMenu />
+            <SelectCategoryMenu />
           </div>
-          <FormInput type="text" value={AddProductInput.PRODUCT_TITLE} />
+          <FormInput type="text" value={ProductInput.PRODUCT_TITLE} />
         </div>
         <div className="grid md:grid-cols-2 md:gap-6">
-          <FormInput type="number" value={AddProductInput.PRICE} />
-          <FormInput type="number" value={AddProductInput.STOCK} />
+          <FormInput type="number" value={ProductInput.PRICE} />
+          <FormInput type="number" value={ProductInput.STOCK} />
         </div>
-        <FormInput type="text" value={AddProductInput.DESCRIPTION} />
-        <FormButton />
+        <FormInput type="text" value={ProductInput.DESCRIPTION} />
+        <FormButton title="Submit" />
       </form>
     </div>
   );

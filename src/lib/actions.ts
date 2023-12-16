@@ -109,3 +109,28 @@ export const deleteUser = async (formData: FormData) => {
 
   revalidatePath('/users');
 };
+
+export const editProduct = async (formData: FormData) => {
+  const { id, title, description, price, stock, category } =
+    Object.fromEntries(formData);
+
+  const product = await modelProduct.findById(id);
+
+  if (!product) {
+    throw new Error('Product not found');
+  }
+  try {
+    connectToMongo();
+    await modelProduct.findByIdAndUpdate(id, {
+      title,
+      description,
+      price,
+      stock,
+      category,
+    });
+  } catch (error) {
+    throw new Error('Failed to edit product');
+  }
+
+  revalidatePath('/products');
+};

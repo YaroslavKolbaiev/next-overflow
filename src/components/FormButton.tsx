@@ -3,7 +3,7 @@
 import React from 'react';
 import { useFormStatus } from 'react-dom';
 
-const FormButton = () => {
+const FormButton = ({ title }: { title: string }) => {
   const { pending } = useFormStatus();
   return (
     <button
@@ -19,7 +19,7 @@ const FormButton = () => {
         max-md:w-full
       "
     >
-      {pending ? 'Loading...' : 'Submit'}
+      {pending ? 'Loading...' : title}
     </button>
   );
 };
