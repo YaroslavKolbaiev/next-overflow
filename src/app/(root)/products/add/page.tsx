@@ -7,7 +7,7 @@ import React from 'react';
 
 const AddProduct = () => {
   return (
-    <div className="background-light900_dark200 rounded-md p-4">
+    <div className="background-light900_dark200 h-full rounded-md p-4">
       <form action={addProduct} className="mx-auto max-w-md">
         <div className="mt-5 grid md:grid-cols-2 md:gap-6">
           <div className="group relative mb-5 w-full">

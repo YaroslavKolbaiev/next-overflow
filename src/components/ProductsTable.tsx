@@ -12,8 +12,8 @@ const ProductsTable = async ({
   const { products } = await fetchProducts(search, +page);
   return (
     <tbody className="">
-      {products.map(({ _id, title, category, description, price, stock }) => (
-        <tr key={_id}>
+      {products.map(({ id, title, category, description, price, stock }) => (
+        <tr key={id}>
           <th scope="row" className="px-2 py-3 md:px-3">
             {title}
           </th>
@@ -21,7 +21,7 @@ const ProductsTable = async ({
           <td className="px-2 py-3 md:px-3">{category}</td>
           <td className="px-2 py-3 md:px-3">{price}</td>
           <td className="px-2 py-3 md:px-3">{stock}</td>
-          <TableButtons id={_id} href={`/products/${_id}`} />
+          <TableButtons id={id} href={`/products/${id}`} />
         </tr>
       ))}
     </tbody>

@@ -8,7 +8,7 @@ export interface SidebarLink {
 }
 
 export interface User {
-  _id: string;
+  id: string;
   userName: string;
   email: string;
   password: string;
@@ -18,7 +18,7 @@ export interface User {
 }
 
 export interface Product {
-  _id: string;
+  id: string;
   title: string;
   description: string;
   price: number;

@@ -56,8 +56,6 @@ export const addProduct = async (formData: FormData) => {
   const { title, description, price, stock, category } =
     Object.fromEntries(formData);
 
-  console.log(title, description, price, stock, category);
-
   try {
     connectToMongo();
     const product = new modelProduct({
@@ -78,6 +76,12 @@ export const addProduct = async (formData: FormData) => {
 
 export const deleteProduct = async (formData: FormData) => {
   const { id } = Object.fromEntries(formData);
+
+  const product = await modelProduct.findById(id);
+
+  if (!product) {
+    throw new Error('Product not found');
+  }
   try {
     connectToMongo();
     await modelProduct.findByIdAndDelete(id);
@@ -86,4 +90,22 @@ export const deleteProduct = async (formData: FormData) => {
   }
 
   revalidatePath('/products');
+};
+
+export const deleteUser = async (formData: FormData) => {
+  const { id } = Object.fromEntries(formData);
+
+  const user = await modelUser.findById(id);
+
+  if (!user) {
+    throw new Error('User not found');
+  }
+  try {
+    connectToMongo();
+    await modelUser.findByIdAndDelete(id);
+  } catch (error) {
+    throw new Error('Failed to delete product');
+  }
+
+  revalidatePath('/users');
 };
