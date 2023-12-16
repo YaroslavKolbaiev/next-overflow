@@ -13,13 +13,13 @@ const AddProduct = () => {
           <div className="group relative mb-5 w-full">
             <SelectCategoryMenu />
           </div>
-          <FormInput type="text" value={ProductInput.PRODUCT_TITLE} />
+          <FormInput type="text" name={ProductInput.PRODUCT_TITLE} />
         </div>
         <div className="grid md:grid-cols-2 md:gap-6">
-          <FormInput type="number" value={ProductInput.PRICE} />
-          <FormInput type="number" value={ProductInput.STOCK} />
+          <FormInput type="number" name={ProductInput.PRICE} />
+          <FormInput type="number" name={ProductInput.STOCK} />
         </div>
-        <FormInput type="text" value={ProductInput.DESCRIPTION} />
+        <FormInput type="text" name={ProductInput.DESCRIPTION} />
         <FormButton title="Submit" />
       </form>
     </div>

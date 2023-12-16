@@ -65,11 +65,24 @@ export interface TableHeadProps {
 }
 
 export interface FormInputProps {
-  value: ProductInput | UserInput;
+  name: ProductInput | UserInput;
   type: string;
+  defaultValue?: string | number;
 }
 
 export interface TableButtonsProps {
   href: string;
   id: string;
 }
+
+type UserPageProps = {
+  params: {
+    userId: string;
+  };
+};
+
+type ProductPageProps = {
+  params: {
+    productId: string;
+  };
+};

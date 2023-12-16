@@ -1,14 +1,15 @@
 import { FormInputProps } from '@/types';
 import React from 'react';
 
-const FormInput = ({ value, type }: FormInputProps) => {
+const FormInput = ({ name, type, defaultValue }: FormInputProps) => {
   return (
     <div className="group relative z-0 mb-5 w-full">
       <input
+        defaultValue={defaultValue}
         maxLength={50}
         type={type}
-        name={value}
-        id={value}
+        name={name}
+        id={name}
         className="text-dark200_light800
           border-gray300_dark600
           peer
@@ -30,7 +31,7 @@ const FormInput = ({ value, type }: FormInputProps) => {
         required
       />
       <label
-        htmlFor={value}
+        htmlFor={name}
         className="formText-gray600_gray400
           absolute
           top-3
@@ -51,7 +52,7 @@ const FormInput = ({ value, type }: FormInputProps) => {
           rtl:peer-focus:translate-x-1/4
         "
       >
-        {value}
+        {name}
       </label>
     </div>
   );

@@ -1,4 +1,4 @@
-import { FetchProductsResponse, FetchUserResponse } from '@/types';
+import { FetchProductsResponse, FetchUserResponse, Product } from '@/types';
 import { modelUser } from '../model/User';
 import { ITEMS_PER_PAGE, connectToMongo, getData } from './utils';
 import { modelProduct } from '@/model/Product';
@@ -66,5 +66,20 @@ export const fetchCount = async (
     return count;
   } catch (error: any) {
     throw new Error(error.message);
+  }
+};
+
+export const fetchProductById = async (id: string): Promise<Product> => {
+  try {
+    connectToMongo();
+    const product = await modelProduct.findById(id);
+
+    if (!product) {
+      throw new Error('Product not found');
+    }
+
+    return product;
+  } catch (error) {
+    throw new Error('Fail to fetch product');
   }
 };

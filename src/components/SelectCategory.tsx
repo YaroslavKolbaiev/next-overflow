@@ -10,9 +10,9 @@ import {
 } from '@/components/ui/select';
 import { ProductInput, ProductCategory } from '@/types/enums';
 
-const SelectCategoryMenu = () => {
+const SelectCategoryMenu = ({ defaultValue }: { defaultValue: string }) => {
   return (
-    <Select name={ProductInput.CATEGORY}>
+    <Select defaultValue={defaultValue} name={ProductInput.CATEGORY}>
       <SelectTrigger>
         <SelectValue placeholder="Select a category" />
       </SelectTrigger>

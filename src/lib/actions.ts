@@ -20,6 +20,8 @@ export const addUser = async (formData: FormData) => {
     throw new Error('Email or password is invalid');
   }
 
+  await connectToMongo();
+
   const userNameCheck = await modelUser.findOne({ userName });
 
   if (userNameCheck) {
@@ -35,7 +37,6 @@ export const addUser = async (formData: FormData) => {
   const hashedPassword = await bcrypt.hash(password as string, 10);
 
   try {
-    connectToMongo();
     const user = new modelUser({
       userName,
       email,
@@ -56,8 +57,8 @@ export const addProduct = async (formData: FormData) => {
   const { title, description, price, stock, category } =
     Object.fromEntries(formData);
 
+  await connectToMongo();
   try {
-    connectToMongo();
     const product = new modelProduct({
       title,
       description,
@@ -77,13 +78,14 @@ export const addProduct = async (formData: FormData) => {
 export const deleteProduct = async (formData: FormData) => {
   const { id } = Object.fromEntries(formData);
 
+  await connectToMongo();
+
   const product = await modelProduct.findById(id);
 
   if (!product) {
     throw new Error('Product not found');
   }
   try {
-    connectToMongo();
     await modelProduct.findByIdAndDelete(id);
   } catch (error) {
     throw new Error('Failed to delete product');
@@ -95,13 +97,14 @@ export const deleteProduct = async (formData: FormData) => {
 export const deleteUser = async (formData: FormData) => {
   const { id } = Object.fromEntries(formData);
 
+  await connectToMongo();
+
   const user = await modelUser.findById(id);
 
   if (!user) {
     throw new Error('User not found');
   }
   try {
-    connectToMongo();
     await modelUser.findByIdAndDelete(id);
   } catch (error) {
     throw new Error('Failed to delete product');
@@ -114,13 +117,14 @@ export const editProduct = async (formData: FormData) => {
   const { id, title, description, price, stock, category } =
     Object.fromEntries(formData);
 
+  await connectToMongo();
+
   const product = await modelProduct.findById(id);
 
   if (!product) {
     throw new Error('Product not found');
   }
   try {
-    connectToMongo();
     await modelProduct.findByIdAndUpdate(id, {
       title,
       description,
@@ -133,4 +137,5 @@ export const editProduct = async (formData: FormData) => {
   }
 
   revalidatePath('/products');
+  redirect('/products');
 };

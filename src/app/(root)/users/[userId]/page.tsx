@@ -2,14 +2,9 @@ import React from 'react';
 import Image from 'next/image';
 import FormInput from '@/components/FormInput';
 import { UserInput } from '@/types/enums';
+import { UserPageProps } from '@/types';
 
-type Props = {
-  params: {
-    userId: string;
-  };
-};
-
-const UserPage = ({ params: { userId } }: Props) => {
+const UserPage = ({ params: {userId} }: UserPageProps ) => {
   return (
     <div className="grid gap-4 md:grid-cols-6">
       <div className="background-light900_dark200 flex h-fit flex-col rounded-md p-4 md:col-span-2">
@@ -28,10 +23,10 @@ const UserPage = ({ params: { userId } }: Props) => {
         <p className="text-dark200_light800">ID: {userId}</p>
       </div>
       <div className="background-light900_dark200 rounded-md p-4 md:col-span-4">
-        <FormInput value={UserInput.USER_NAME} type="text" />
-        <FormInput value={UserInput.EMAIL} type="email" />
-        <FormInput value={UserInput.PASSWORD} type="password" />
-        <FormInput value={UserInput.PHONE} type="text" />
+        <FormInput name={UserInput.USER_NAME} type="text" />
+        <FormInput name={UserInput.EMAIL} type="email" />
+        <FormInput name={UserInput.PASSWORD} type="password" />
+        <FormInput name={UserInput.PHONE} type="text" />
         <div className="mb-5">
           <label
             htmlFor="Address"
