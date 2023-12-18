@@ -1,4 +1,9 @@
-import { FetchProductsResponse, FetchUserResponse, Product } from '@/types';
+import {
+  FetchProductsResponse,
+  FetchUserResponse,
+  Product,
+  User,
+} from '@/types';
 import { modelUser } from '../model/User';
 import { ITEMS_PER_PAGE, connectToMongo, getData } from './utils';
 import { modelProduct } from '@/model/Product';
@@ -9,8 +14,9 @@ export const fetchUsers = async (
 ): Promise<FetchUserResponse> => {
   // regex expression to search for users case insensitive
   const regex = new RegExp(search, 'i');
+
+  await connectToMongo();
   try {
-    connectToMongo();
     // await getData('Hello');
     const users = await modelUser
       .find({ userName: { $regex: regex } })
@@ -29,9 +35,9 @@ export const fetchProducts = async (
 ): Promise<FetchProductsResponse> => {
   // regex expression to search for users case insensitive
   const regex = new RegExp(search, 'i');
-  try {
-    connectToMongo();
 
+  await connectToMongo();
+  try {
     const products = await modelProduct
       .find({ title: { $regex: regex } })
       .limit(ITEMS_PER_PAGE)
@@ -51,8 +57,9 @@ export const fetchCount = async (
   const regex = new RegExp(search, 'i');
   let count: number;
 
+  await connectToMongo();
+
   try {
-    connectToMongo();
     if (param === 'users') {
       count = await modelUser
         .find({ userName: { $regex: regex } })
@@ -70,8 +77,9 @@ export const fetchCount = async (
 };
 
 export const fetchProductById = async (id: string): Promise<Product> => {
+  await connectToMongo();
+
   try {
-    connectToMongo();
     const product = await modelProduct.findById(id);
 
     if (!product) {
@@ -81,5 +89,21 @@ export const fetchProductById = async (id: string): Promise<Product> => {
     return product;
   } catch (error) {
     throw new Error('Fail to fetch product');
+  }
+};
+
+export const fetchUserById = async (id: string): Promise<User> => {
+  await connectToMongo();
+
+  try {
+    const user = await modelUser.findById(id);
+
+    if (!user) {
+      throw new Error('User not found');
+    }
+
+    return user;
+  } catch (error) {
+    throw new Error('Fail to fetch user');
   }
 };

@@ -75,14 +75,20 @@ export interface TableButtonsProps {
   id: string;
 }
 
-type UserPageProps = {
+export type UserPageProps = {
   params: {
     userId: string;
   };
 };
 
-type ProductPageProps = {
+export type ProductPageProps = {
   params: {
     productId: string;
   };
 };
+
+export interface FormTextAreaProps {
+  defaultValue?: string;
+  name: ProductInput.DESCRIPTION | UserInput.ADRESS;
+  id: string;
+}

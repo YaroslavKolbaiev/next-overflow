@@ -139,3 +139,28 @@ export const editProduct = async (formData: FormData) => {
   revalidatePath('/products');
   redirect('/products');
 };
+
+export const editUser = async (formData: FormData) => {
+  const { id, userName, email, phone, adress } = Object.fromEntries(formData);
+
+  await connectToMongo();
+
+  const user = await modelUser.findById(id);
+
+  if (!user) {
+    throw new Error('User not found');
+  }
+  try {
+    await modelUser.findByIdAndUpdate(id, {
+      userName,
+      email,
+      phone,
+      adress,
+    });
+  } catch (error) {
+    throw new Error('Failed to edit user');
+  }
+
+  revalidatePath('/users');
+  redirect('/users');
+};
