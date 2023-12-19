@@ -87,8 +87,11 @@ export type ProductPageProps = {
   };
 };
 
-export interface FormTextAreaProps {
-  defaultValue?: string;
-  name: ProductInput.DESCRIPTION | UserInput.ADRESS;
+export type FormTextAreaProps = {
   id: string;
-}
+} & ({
+  name: ProductInput.DESCRIPTION
+  defaultValue: string
+} | {
+  name: UserInput.ADRESS
+})

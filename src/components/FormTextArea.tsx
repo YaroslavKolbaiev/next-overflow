@@ -1,7 +1,9 @@
 import { FormTextAreaProps } from '@/types';
+import { ProductInput } from '@/types/enums';
 import React from 'react';
 
-const FormTextArea = ({ defaultValue, name, id }: FormTextAreaProps) => {
+// new TS way of providing type safety for conditional props
+const FormTextArea = (props: FormTextAreaProps) => {
   return (
     <div className="mb-5">
       <label
@@ -14,12 +16,14 @@ const FormTextArea = ({ defaultValue, name, id }: FormTextAreaProps) => {
           capitalize
         "
       >
-        {name}
+        {props.name}
       </label>
       <textarea
-        defaultValue={defaultValue}
-        name={name}
-        id={id}
+        defaultValue={
+          props.name === ProductInput.DESCRIPTION ? props.defaultValue : ''
+        }
+        name={props.name}
+        id={props.id}
         className="border-gray300_dark600
           text-dark200_light800
           block
@@ -37,6 +41,7 @@ const FormTextArea = ({ defaultValue, name, id }: FormTextAreaProps) => {
           focus:ring-0
           dark:focus:border-primary-500
         "
+        required
       />
     </div>
   );

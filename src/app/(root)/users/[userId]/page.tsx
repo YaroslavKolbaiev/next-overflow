@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
 import FormInput from '@/components/FormInput';
 import { UserInput } from '@/types/enums';
 import { UserPageProps } from '@/types';

@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -5,8 +7,12 @@ import { UserButton, SignedIn, ClerkLoading } from '@clerk/nextjs';
 import Theme from './Theme';
 import MobileNav from './MobileNav';
 import SearchBar from './SearchBar';
+import { usePathname } from 'next/navigation';
 
 const Navbar = () => {
+  const path = usePathname();
+
+  const showSearchBar = path === '/products' || path === '/users';
   return (
     <nav
       className="
@@ -38,7 +44,7 @@ const Navbar = () => {
             Next <span className="text-primary-500">Overflow</span>
           </p>
         </Link>
-        <SearchBar />
+        {showSearchBar && <SearchBar />}
         <div className="flex-between gap-5">
           <Theme />
           <ClerkLoading>
