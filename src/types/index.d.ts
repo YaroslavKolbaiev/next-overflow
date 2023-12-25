@@ -22,7 +22,7 @@ export interface Product {
   title: string;
   description: string;
   price: number;
-  createdAt: string;
+  createdAt: Date;
   stock: number;
   category: ProductCategory;
 }
@@ -89,9 +89,18 @@ export type ProductPageProps = {
 
 export type FormTextAreaProps = {
   id: string;
-} & ({
-  name: ProductInput.DESCRIPTION
-  defaultValue: string
-} | {
-  name: UserInput.ADRESS
-})
+} & (
+  | {
+      name: ProductInput.DESCRIPTION;
+      defaultValue: string;
+    }
+  | {
+      name: UserInput.ADRESS;
+    }
+);
+
+export interface UserStatistic {
+  monthId: number;
+  month: string;
+  users: number;
+}

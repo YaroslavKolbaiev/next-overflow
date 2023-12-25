@@ -2,6 +2,9 @@ import { ProductCategory } from '@/types/enums';
 import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
+// continue from here
+// dont dorget agragate calls
+
 const productSchema = new Schema(
   {
     title: {

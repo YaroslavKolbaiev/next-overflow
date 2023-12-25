@@ -3,10 +3,13 @@ import {
   FetchUserResponse,
   Product,
   User,
+  UserStatistic,
 } from '@/types';
 import { modelUser } from '../model/User';
 import { ITEMS_PER_PAGE, connectToMongo, getData } from './utils';
 import { modelProduct } from '@/model/Product';
+import { Statistic } from '@/model/Statistic';
+import { usersStats } from './tempData';
 
 export const fetchUsers = async (
   search: string,
@@ -92,6 +95,25 @@ export const fetchProductById = async (id: string): Promise<Product> => {
   }
 };
 
+export const fetchProductsWithDates = async (): Promise<Product[]> => {
+  await connectToMongo();
+
+  try {
+    const products = await modelProduct.find({
+      createdAt: { $gte: '2023-01-01', $lt: '2023-12-31' },
+    });
+    // .countDocuments(); +++ check if you need count or all documents
+
+    if (!products) {
+      throw new Error('Product not found');
+    }
+
+    return products;
+  } catch (error) {
+    throw new Error('Fail to fetch product');
+  }
+};
+
 export const fetchUserById = async (id: string): Promise<User> => {
   await connectToMongo();
 
@@ -105,5 +127,28 @@ export const fetchUserById = async (id: string): Promise<User> => {
     return user;
   } catch (error) {
     throw new Error('Fail to fetch user');
+  }
+};
+
+export const insertUsersStats = async () => {
+  'use server';
+  await connectToMongo();
+
+  try {
+    Statistic.insertMany(usersStats);
+  } catch (error) {
+    console.log('failed to insert many users stats');
+  }
+};
+
+export const fetchStats = async (): Promise<UserStatistic[]> => {
+  'use server';
+  await connectToMongo();
+
+  try {
+    const data = await Statistic.find({}, 'monthId month users');
+    return data;
+  } catch (error) {
+    throw new Error('Failed to fetch stats');
   }
 };

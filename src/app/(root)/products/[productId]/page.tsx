@@ -9,9 +9,8 @@ import { ProductInput } from '@/types/enums';
 import React from 'react';
 
 const ProductPage = async ({ params: { productId } }: ProductPageProps) => {
-  const { title, price, stock, description, category } = await fetchProductById(
-    productId
-  );
+  const { title, price, stock, description, category, createdAt } =
+    await fetchProductById(productId);
 
   return (
     <div className="background-light900_dark200 h-full rounded-md p-4">

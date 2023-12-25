@@ -3,7 +3,7 @@ import Pagination from '@/components/Pagination';
 import ProductsTable from '@/components/ProductsTable';
 import TableHead from '@/components/TableHead';
 import TableSkeleton from '@/components/TableSkeleton';
-import { fetchCount, fetchProducts } from '@/lib/data';
+import { fetchCount, fetchProducts, fetchProductsWithDates } from '@/lib/data';
 import { ITEMS_PER_PAGE } from '@/lib/utils';
 import { SearchParamsProps } from '@/types';
 import React, { Suspense } from 'react';
