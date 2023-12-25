@@ -9,7 +9,7 @@ import { modelUser } from '../model/User';
 import { ITEMS_PER_PAGE, connectToMongo, getData } from './utils';
 import { modelProduct } from '@/model/Product';
 import { Statistic } from '@/model/Statistic';
-import { usersStats } from './tempData';
+// import { usersStats } from './tempData';
 
 export const fetchUsers = async (
   search: string,
@@ -130,19 +130,18 @@ export const fetchUserById = async (id: string): Promise<User> => {
   }
 };
 
-export const insertUsersStats = async () => {
-  'use server';
-  await connectToMongo();
+// export const insertUsersStats = async () => {
+//   'use server';
+//   await connectToMongo();
 
-  try {
-    Statistic.insertMany(usersStats);
-  } catch (error) {
-    console.log('failed to insert many users stats');
-  }
-};
+//   try {
+//     Statistic.insertMany(usersStats);
+//   } catch (error) {
+//     console.log('failed to insert many users stats');
+//   }
+// };
 
 export const fetchStats = async (): Promise<UserStatistic[]> => {
-  'use server';
   await connectToMongo();
 
   try {

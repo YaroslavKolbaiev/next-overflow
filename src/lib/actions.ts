@@ -6,6 +6,7 @@ import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import bcrypt from 'bcrypt';
 import { modelProduct } from '@/model/Product';
+import { Statistic } from '@/model/Statistic';
 
 export const addUser = async (formData: FormData) => {
   const { userName, email, password, phone, adress } =
@@ -45,11 +46,17 @@ export const addUser = async (formData: FormData) => {
       adress,
     });
     await user.save();
+    const updateStatistic = await Statistic.findOne({
+      monthId: user.createdAt.getMonth(),
+    });
+    updateStatistic.set({ users: updateStatistic.users + 1 });
+    await updateStatistic.save();
   } catch (error) {
     throw new Error('Failed to add user');
   }
 
   revalidatePath('/users');
+  revalidatePath('/');
   redirect('/users');
 };
 
@@ -164,3 +171,5 @@ export const editUser = async (formData: FormData) => {
   revalidatePath('/users');
   redirect('/users');
 };
+
+export const updateStatistic = async () => {};
