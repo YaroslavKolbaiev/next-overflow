@@ -10,5 +10,5 @@ export const usersStats = [
   { monthId: 8, month: 'Sep', users: 7 },
   { monthId: 9, month: 'Oct', users: 10 },
   { monthId: 10, month: 'Nov', users: 10 },
-  { monthId: 11, month: 'Dec', users: 11 },
+  { monthId: 11, month: 'Dec', users: 13 },
 ];

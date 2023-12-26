@@ -135,18 +135,21 @@ export const fetchUserById = async (id: string): Promise<User> => {
 //   await connectToMongo();
 
 //   try {
-//     Statistic.insertMany(usersStats);
+//     const year = await Statistic.findOne({ year: 2023 });
+
+//     year.set({ statistics: usersStats });
+//     await year.save();
 //   } catch (error) {
 //     console.log('failed to insert many users stats');
 //   }
 // };
 
-export const fetchStats = async (): Promise<UserStatistic[]> => {
+export const fetchStats = async (year: string): Promise<UserStatistic[]> => {
   await connectToMongo();
 
   try {
-    const data = await Statistic.find({}, 'monthId month users');
-    return data;
+    const { statistics } = await Statistic.findOne({ year });
+    return statistics;
   } catch (error) {
     throw new Error('Failed to fetch stats');
   }

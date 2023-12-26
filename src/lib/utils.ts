@@ -63,3 +63,5 @@ export const validatePassword = (value: string) => {
     return 'At least 6 characters';
   }
 };
+
+export const currentYear = new Date().getFullYear().toString();

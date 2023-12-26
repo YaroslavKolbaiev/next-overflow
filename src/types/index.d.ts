@@ -104,3 +104,9 @@ export interface UserStatistic {
   month: string;
   users: number;
 }
+
+export interface Statistic {
+  id: string;
+  year: String;
+  statistics: UserStatistic[];
+}

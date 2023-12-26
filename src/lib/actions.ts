@@ -1,7 +1,12 @@
 'use server';
 
 import { modelUser } from '@/model/User';
-import { connectToMongo, validateEmail, validatePassword } from './utils';
+import {
+  connectToMongo,
+  currentYear,
+  validateEmail,
+  validatePassword,
+} from './utils';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import bcrypt from 'bcrypt';
@@ -46,11 +51,11 @@ export const addUser = async (formData: FormData) => {
       adress,
     });
     await user.save();
-    const updateStatistic = await Statistic.findOne({
-      monthId: user.createdAt.getMonth(),
-    });
-    updateStatistic.set({ users: updateStatistic.users + 1 });
-    await updateStatistic.save();
+    await Statistic.findOneAndUpdate(
+      { year: currentYear },
+      { $inc: { 'statistics.$[element].users': 1 } },
+      { arrayFilters: [{ 'element.monthId': user.createdAt.getMonth() }] }
+    );
   } catch (error) {
     throw new Error('Failed to add user');
   }
