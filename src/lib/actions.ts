@@ -51,6 +51,7 @@ export const addUser = async (formData: FormData) => {
       adress,
     });
     await user.save();
+
     await Statistic.findOneAndUpdate(
       { year: currentYear },
       { $inc: { 'statistics.$[element].users': 1 } },
@@ -176,5 +177,3 @@ export const editUser = async (formData: FormData) => {
   revalidatePath('/users');
   redirect('/users');
 };
-
-export const updateStatistic = async () => {};

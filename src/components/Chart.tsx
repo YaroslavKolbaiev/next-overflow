@@ -3,8 +3,9 @@
 import { UserStatistic } from '@/types';
 import React from 'react';
 import {
-  LineChart,
-  Line,
+  BarChart,
+  Bar,
+  Rectangle,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -15,10 +16,9 @@ import {
 
 const Chart = ({ data }: { data: UserStatistic[] }) => {
   return (
-    <div className="background-light900_dark200 h-56 xs:h-72 sm:h-96">
-      <h2>Weekly Recap</h2>
+    <div className="background-light900_dark200 h-56 rounded-md xs:h-72 sm:h-96">
       <ResponsiveContainer width="100%" height="100%">
-        <LineChart
+        <BarChart
           width={500}
           height={300}
           data={data}
@@ -34,8 +34,12 @@ const Chart = ({ data }: { data: UserStatistic[] }) => {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Line type="monotone" dataKey="users" stroke="#8884d8" />
-        </LineChart>
+          <Bar
+            dataKey="users"
+            fill="#8884D8"
+            activeBar={<Rectangle fill="#FC8493" stroke="blue" />}
+          />{' '}
+        </BarChart>
       </ResponsiveContainer>
     </div>
   );

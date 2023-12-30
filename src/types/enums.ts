@@ -27,3 +27,9 @@ export enum ProductInput {
   STOCK = 'stock',
   CATEGORY = 'category',
 }
+
+export enum TransactionStatus {
+  PENDING = 'Pending',
+  COMPLETED = 'Completed',
+  CANCELLED = 'Cancelled',
+}

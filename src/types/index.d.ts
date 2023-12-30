@@ -1,5 +1,10 @@
 import { BADGE_CRITERIA } from '@/constants';
-import { ProductInput, UserInput, ProductCategory } from './enums';
+import {
+  ProductInput,
+  UserInput,
+  ProductCategory,
+  TransactionStatus,
+} from './enums';
 
 export interface SidebarLink {
   imgURL: string;
@@ -27,6 +32,14 @@ export interface Product {
   category: ProductCategory;
 }
 
+export interface Transaction {
+  id: string;
+  name: string;
+  status: TransactionStatus;
+  amount: number;
+  createdAt: Date;
+}
+
 export interface ParamsProps {
   params: { id: string };
 }
@@ -46,6 +59,10 @@ export interface FetchUserResponse {
 
 export interface FetchProductsResponse {
   products: Product[];
+}
+
+export interface FetchTransactionsResponse {
+  transactions: Transaction[];
 }
 
 export interface PaginationProps {

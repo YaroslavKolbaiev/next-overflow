@@ -1,3 +1,5 @@
+import { TransactionStatus } from '@/types/enums';
+
 export const usersStats = [
   { monthId: 0, month: 'Jan', users: 1 },
   { monthId: 1, month: 'Feb', users: 1 },
@@ -11,4 +13,41 @@ export const usersStats = [
   { monthId: 9, month: 'Oct', users: 10 },
   { monthId: 10, month: 'Nov', users: 10 },
   { monthId: 11, month: 'Dec', users: 13 },
+];
+
+export const transactionsData = [
+  { name: 'John', status: TransactionStatus.PENDING, amount: 100 },
+  { name: 'Jane', status: TransactionStatus.COMPLETED, amount: 200 },
+  { name: 'Joe', status: TransactionStatus.COMPLETED, amount: 300 },
+  { name: 'Jill', status: TransactionStatus.PENDING, amount: 400 },
+  { name: 'Jack', status: TransactionStatus.COMPLETED, amount: 500 },
+  { name: 'Jenny', status: TransactionStatus.COMPLETED, amount: 600 },
+  { name: 'Jade', status: TransactionStatus.PENDING, amount: 700 },
+  { name: 'Jasper', status: TransactionStatus.COMPLETED, amount: 800 },
+  { name: 'Jared', status: TransactionStatus.CANCELLED, amount: 900 },
+  { name: 'Jasmine', status: TransactionStatus.PENDING, amount: 1000 },
+  { name: 'Jules', status: TransactionStatus.PENDING, amount: 1100 },
+  { name: 'Jude', status: TransactionStatus.COMPLETED, amount: 1200 },
+  { name: 'Julian', status: TransactionStatus.PENDING, amount: 1300 },
+  { name: 'Julia', status: TransactionStatus.COMPLETED, amount: 1400 },
+  { name: 'Jenna', status: TransactionStatus.CANCELLED, amount: 1500 },
+  { name: 'Jenny', status: TransactionStatus.PENDING, amount: 1600 },
+  { name: 'Jade', status: TransactionStatus.CANCELLED, amount: 1700 },
+  { name: 'Jasper', status: TransactionStatus.PENDING, amount: 1800 },
+  { name: 'Jared', status: TransactionStatus.COMPLETED, amount: 1900 },
+  { name: 'Jasmine', status: TransactionStatus.COMPLETED, amount: 2000 },
+  { name: 'Jules', status: TransactionStatus.PENDING, amount: 2100 },
+  { name: 'Jude', status: TransactionStatus.CANCELLED, amount: 2200 },
+  { name: 'Julian', status: TransactionStatus.PENDING, amount: 2300 },
+  { name: 'Julia', status: TransactionStatus.CANCELLED, amount: 2400 },
+  { name: 'Jenna', status: TransactionStatus.COMPLETED, amount: 2500 },
+  { name: 'Jenny', status: TransactionStatus.PENDING, amount: 2600 },
+  { name: 'Jade', status: TransactionStatus.COMPLETED, amount: 2700 },
+  { name: 'Tom', status: TransactionStatus.PENDING, amount: 3800 },
+  { name: 'Tim', status: TransactionStatus.COMPLETED, amount: 3900 },
+  { name: 'Tina', status: TransactionStatus.COMPLETED, amount: 4000 },
+  { name: 'Adrian', status: TransactionStatus.PENDING, amount: 4100 },
+  { name: 'Amanda', status: TransactionStatus.COMPLETED, amount: 4200 },
+  { name: 'Adele', status: TransactionStatus.COMPLETED, amount: 4300 },
+  { name: 'Aiden', status: TransactionStatus.CANCELLED, amount: 4400 },
 ];
