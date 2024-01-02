@@ -70,7 +70,7 @@ export const fetchTransactions = async (
 
 export const fetchCount = async (
   search: string,
-  param: 'users' | 'products'
+  param: 'users' | 'products' | 'transactions'
 ): Promise<number> => {
   // regex expression to search for users case insensitive
   const regex = new RegExp(search, 'i');
@@ -79,6 +79,11 @@ export const fetchCount = async (
   await connectToMongo();
 
   try {
+    if (param === 'transactions') {
+      count = await modelTransaction.find({}).countDocuments();
+      return count;
+    }
+
     if (param === 'users') {
       count = await modelUser
         .find({ userName: { $regex: regex } })

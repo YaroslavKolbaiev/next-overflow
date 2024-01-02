@@ -6,6 +6,12 @@ import TableSkeleton from '@/components/TableSkeleton';
 import { fetchCount } from '@/lib/data';
 import { ITEMS_PER_PAGE } from '@/lib/utils';
 import { SearchParamsProps } from '@/types';
+import {
+  TableHeadMailDescStatus,
+  TableHeadNameTitle,
+  TableHeadPriceDate,
+  TableHeadStockPhoneAmount,
+} from '@/types/enums';
 import React, { Suspense } from 'react';
 
 const Products = async ({ searchParams }: SearchParamsProps) => {
@@ -35,10 +41,10 @@ const Products = async ({ searchParams }: SearchParamsProps) => {
         >
           <TableHead
             head={{
-              name_title: 'Title',
-              mail_description: 'Description',
-              createdAt_price: 'Price',
-              phone_stock: 'Stock',
+              name_title: TableHeadNameTitle.TITLE,
+              mail_description_status: TableHeadMailDescStatus.DESCRIPTION,
+              createdAt_price: TableHeadPriceDate.PRICE,
+              phone_stock_amount: TableHeadStockPhoneAmount.STOCK,
               category: 'Category',
             }}
           />

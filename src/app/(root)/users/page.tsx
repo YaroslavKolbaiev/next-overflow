@@ -1,4 +1,4 @@
-import { fetchCount, fetchUsers } from '@/lib/data';
+import { fetchCount } from '@/lib/data';
 import React, { Suspense } from 'react';
 import Pagination from '@/components/Pagination';
 import TableHead from '@/components/TableHead';
@@ -7,6 +7,12 @@ import { ITEMS_PER_PAGE } from '@/lib/utils';
 import { SearchParamsProps } from '@/types';
 import UsersTabe from '@/components/UsersTable';
 import TableSkeleton from '@/components/TableSkeleton';
+import {
+  TableHeadNameTitle,
+  TableHeadMailDescStatus,
+  TableHeadPriceDate,
+  TableHeadStockPhoneAmount,
+} from '@/types/enums';
 
 const Users = async ({ searchParams }: SearchParamsProps) => {
   const search = searchParams.search || '';
@@ -35,10 +41,10 @@ const Users = async ({ searchParams }: SearchParamsProps) => {
         >
           <TableHead
             head={{
-              name_title: 'Name',
-              mail_description: 'E-Mail',
-              createdAt_price: 'Created At',
-              phone_stock: 'Phone',
+              name_title: TableHeadNameTitle.NAME,
+              mail_description_status: TableHeadMailDescStatus.EMAIL,
+              createdAt_price: TableHeadPriceDate.DATE,
+              phone_stock_amount: TableHeadStockPhoneAmount.PHONE,
             }}
           />
           <Suspense key={page + search} fallback={<TableSkeleton />}>

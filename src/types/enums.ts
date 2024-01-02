@@ -33,3 +33,25 @@ export enum TransactionStatus {
   COMPLETED = 'Completed',
   CANCELLED = 'Cancelled',
 }
+
+export enum TableHeadNameTitle {
+  NAME = 'Name',
+  TITLE = 'Title',
+}
+
+export enum TableHeadMailDescStatus {
+  EMAIL = 'E-Mail',
+  DESCRIPTION = 'Description',
+  STATUS = 'Status',
+}
+
+export enum TableHeadPriceDate {
+  PRICE = 'Price',
+  DATE = 'Created At',
+}
+
+export enum TableHeadStockPhoneAmount {
+  STOCK = 'Stock',
+  PHONE = 'Phone',
+  AMOUNT = 'Amount',
+}

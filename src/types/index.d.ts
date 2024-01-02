@@ -4,6 +4,10 @@ import {
   UserInput,
   ProductCategory,
   TransactionStatus,
+  TableHeadNameTitle,
+  TableHeadPriceDate,
+  TableHeadStockPhoneAmount,
+  TableHeadMailDescStatus,
 } from './enums';
 
 export interface SidebarLink {
@@ -37,7 +41,7 @@ export interface Transaction {
   name: string;
   status: TransactionStatus;
   amount: number;
-  createdAt: Date;
+  createdAt: string;
 }
 
 export interface ParamsProps {
@@ -72,11 +76,12 @@ export interface PaginationProps {
 }
 
 export interface TableHeadProps {
+  isTransactions?: boolean;
   head: {
-    name_title: 'Name' | 'Title';
-    mail_description: 'E-Mail' | 'Description';
-    createdAt_price: 'Created At' | 'Price';
-    phone_stock: 'Phone' | 'Stock';
+    name_title: TableHeadNameTitle;
+    mail_description_status: TableHeadMailDescStatus;
+    createdAt_price: TableHeadPriceDate;
+    phone_stock_amount: TableHeadStockPhoneAmount;
     category?: 'Category';
   };
 }
