@@ -67,7 +67,7 @@ export const menuItems = [
     list: [
       {
         title: 'Settings',
-        path: '/settings',
+        path: '/user-profile',
         icon: <MdOutlineSettings />,
       },
       {

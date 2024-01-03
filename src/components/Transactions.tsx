@@ -1,4 +1,13 @@
-import React from 'react';
+import React, { Suspense } from 'react';
+import TableHead from './TableHead';
+import {
+  TableHeadMailDescStatus,
+  TableHeadNameTitle,
+  TableHeadPriceDate,
+  TableHeadStockPhoneAmount,
+} from '@/types/enums';
+import TableSkeleton from './TableSkeleton';
+import TransactionsTable from './TransactionsTable';
 
 const Transactions = () => {
   return (
@@ -6,57 +15,19 @@ const Transactions = () => {
       <h1 className="text-dark500_light500 mb-3 font-semibold">
         Latest Transactions
       </h1>
-      <table className="w-full text-left text-sm rtl:text-right">
-        <thead className="text-dark200_light800 text-xs uppercase">
-          <tr>
-            <th scope="col" className="px-2 py-3 md:px-4">
-              Name
-            </th>
-            <th scope="col" className="px-2 py-3 md:px-4">
-              Status
-            </th>
-            <th scope="col" className="px-2 py-3 md:px-4">
-              Date
-            </th>
-            <th scope="col" className="px-2 py-3 md:px-4">
-              Amount
-            </th>
-          </tr>
-        </thead>
-        <tbody className="text-xs sm:text-sm">
-          <tr className="text-dark200_light800 border-b">
-            <th scope="row" className="flex gap-2 px-2 py-3 md:px-4">
-              John Doe
-            </th>
-            <td className="px-2 py-3 md:px-4">Pending</td>
-            <td className="px-2 py-3 md:px-4">14.10.2023</td>
-            <td className="px-2 py-3 md:px-4">$ 3000</td>
-          </tr>
-          <tr className="text-dark200_light800 border-b">
-            <th scope="row" className="flex gap-2 px-2 py-3 md:px-4">
-              John Doe
-            </th>
-            <td className="px-2 py-3 md:px-4">Pending</td>
-            <td className="px-2 py-3 md:px-4">14.10.2023</td>
-            <td className="px-2 py-3 md:px-4">$ 3000</td>
-          </tr>
-          <tr className="text-dark200_light800 border-b">
-            <th scope="row" className="flex gap-2 px-2 py-3 md:px-4">
-              John Doe
-            </th>
-            <td className="px-2 py-3 md:px-4">Pending</td>
-            <td className="px-2 py-3 md:px-4">14.10.2023</td>
-            <td className="px-2 py-3 md:px-4">$ 3000</td>
-          </tr>
-          <tr className="text-dark200_light800 border-b">
-            <th scope="row" className="flex gap-2 px-2 py-3 md:px-4">
-              John Doe
-            </th>
-            <td className="px-2 py-3 md:px-4">Pending</td>
-            <td className="px-2 py-3 md:px-4">14.10.2023</td>
-            <td className="px-2 py-3 md:px-4">$ 3000</td>
-          </tr>
-        </tbody>
+      <table className="text-dark200_light800 w-full text-left text-sm rtl:text-right">
+        <TableHead
+          isTransactions={true}
+          head={{
+            name_title: TableHeadNameTitle.NAME,
+            mail_description_status: TableHeadMailDescStatus.STATUS,
+            createdAt_price: TableHeadPriceDate.DATE,
+            phone_stock_amount: TableHeadStockPhoneAmount.AMOUNT,
+          }}
+        />
+        <Suspense fallback={<TableSkeleton />}>
+          <TransactionsTable page={'1'} />
+        </Suspense>
       </table>
     </div>
   );

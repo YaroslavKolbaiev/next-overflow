@@ -7,12 +7,10 @@ import {
   UserStatistic,
 } from '@/types';
 import { modelUser } from '../model/User';
-import { ITEMS_PER_PAGE, connectToMongo, getData } from './utils';
+import { ITEMS_PER_PAGE, connectToMongo } from './utils';
 import { modelProduct } from '@/model/Product';
 import { Statistic } from '@/model/Statistic';
 import { modelTransaction } from '@/model/Transaction';
-import { transactionsData } from './tempData';
-// import { usersStats } from './tempData';
 
 export const fetchUsers = async (
   search: string,
@@ -52,6 +50,7 @@ export const fetchProducts = async (
     throw new Error(error.message);
   }
 };
+
 export const fetchTransactions = async (
   page: number
 ): Promise<FetchTransactionsResponse> => {
@@ -60,7 +59,8 @@ export const fetchTransactions = async (
     const transactions = await modelTransaction
       .find({})
       .limit(ITEMS_PER_PAGE)
-      .skip(ITEMS_PER_PAGE * (page - 1));
+      .skip(ITEMS_PER_PAGE * (page - 1))
+      .sort({ createdAt: -1 });
 
     return { transactions };
   } catch (error: any) {
@@ -72,7 +72,6 @@ export const fetchCount = async (
   search: string,
   param: 'users' | 'products' | 'transactions'
 ): Promise<number> => {
-  // regex expression to search for users case insensitive
   const regex = new RegExp(search, 'i');
   let count: number;
 
@@ -112,20 +111,6 @@ export const fetchProductById = async (id: string): Promise<Product> => {
   return product;
 };
 
-export const fetchProductsWithDates = async (): Promise<Product[]> => {
-  await connectToMongo();
-
-  const products = await modelProduct.find({
-    createdAt: { $gte: '2023-01-01', $lt: '2023-12-31' },
-  });
-
-  if (!products.length) {
-    throw new Error('Product not found');
-  }
-
-  return products;
-};
-
 export const fetchUserById = async (id: string): Promise<User> => {
   await connectToMongo();
 
@@ -142,17 +127,6 @@ export const fetchUserById = async (id: string): Promise<User> => {
   }
 };
 
-export const insertData = async () => {
-  'use server';
-  await connectToMongo();
-
-  try {
-    await modelTransaction.insertMany(transactionsData);
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 export const fetchStats = async (year: string): Promise<UserStatistic[]> => {
   await connectToMongo();
 
@@ -163,3 +137,28 @@ export const fetchStats = async (year: string): Promise<UserStatistic[]> => {
     throw new Error('Failed to fetch stats');
   }
 };
+
+// export const fetchProductsWithDates = async (): Promise<Product[]> => {
+//   await connectToMongo();
+
+//   const products = await modelProduct.find({
+//     createdAt: { $gte: '2023-01-01', $lt: '2023-12-31' },
+//   });
+
+//   if (!products.length) {
+//     throw new Error('Product not found');
+//   }
+
+//   return products;
+// };
+
+// export const insertData = async () => {
+//   'use server';
+//   await connectToMongo();
+
+//   try {
+//     await modelTransaction.insertMany(transactionsData);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
