@@ -2,30 +2,15 @@
 
 import React from 'react';
 import { BiSearch } from 'react-icons/bi';
-import { usePathname, useSearchParams, useRouter } from 'next/navigation';
-import { useDebouncedCallback } from 'use-debounce';
+import { usePathname } from 'next/navigation';
 import { UseClickOutside } from '@/hooks/useClickOutside';
+import { UseSearchHandler } from '@/hooks/useSearchHandler';
 
 const SearchBar = () => {
   const [showSearchBar, setShowSearchBar] = React.useState(false);
-  const searchParams = useSearchParams();
   const path = usePathname().split('/')[1];
-  const { replace } = useRouter();
 
-  const handleSearch = useDebouncedCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      const params = new URLSearchParams(searchParams);
-
-      if (e.target.value) {
-        params.set('search', e.target.value);
-      } else {
-        params.delete('search');
-      }
-
-      replace(`${path}?${params}`);
-    },
-    500
-  );
+  const { handleSearch } = UseSearchHandler('search');
 
   const searchRef = UseClickOutside(() => {
     setShowSearchBar(false);

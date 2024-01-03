@@ -41,7 +41,7 @@ const Navbar = () => {
             sm:text-3xl
           "
           >
-            Next <span className="text-primary-500">Overflow</span>
+            Next <span className="text-primary-500">Admin</span>
           </p>
         </Link>
         {showSearchBar && <SearchBar />}
