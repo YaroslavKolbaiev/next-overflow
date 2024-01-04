@@ -16,7 +16,7 @@ import {
 
 const Chart = ({ data }: { data: UserStatistic[] }) => {
   return (
-    <div className="background-light900_dark200 mb-6 h-56 rounded-md xs:h-72 sm:h-96">
+    <div className="background-light900_dark200 h-56 rounded-md xs:h-72 sm:h-96">
       <ResponsiveContainer width="100%" height="100%">
         <BarChart
           width={500}

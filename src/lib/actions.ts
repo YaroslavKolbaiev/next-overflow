@@ -81,6 +81,11 @@ export const addProduct = async (formData: FormData) => {
       category,
     });
     await product.save();
+
+    await modelCategories.findOneAndUpdate(
+      { title: category },
+      { $inc: { value: 1 } }
+    );
   } catch (error) {
     throw new Error('Failed to add product');
   }

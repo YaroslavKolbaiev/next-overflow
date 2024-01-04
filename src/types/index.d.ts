@@ -69,6 +69,13 @@ export interface FetchTransactionsResponse {
   transactions: Transaction[];
 }
 
+export interface CategoriesStatistic {
+  id: string;
+  title: ProductCategory;
+  color: string;
+  value: number;
+}
+
 export interface PaginationProps {
   pageName: string;
   pageValue: string;

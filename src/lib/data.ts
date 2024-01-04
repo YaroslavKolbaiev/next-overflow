@@ -1,4 +1,5 @@
 import {
+  CategoriesStatistic,
   FetchProductsResponse,
   FetchTransactionsResponse,
   FetchUserResponse,
@@ -12,7 +13,6 @@ import { modelProduct } from '@/model/Product';
 import { Statistic } from '@/model/Statistic';
 import { modelTransaction } from '@/model/Transaction';
 import { modelCategories } from '@/model/ProductCategories';
-import { ProductCategory } from '@/types/enums';
 
 export const fetchUsers = async (
   search: string,
@@ -140,7 +140,7 @@ export const fetchStats = async (year: string): Promise<UserStatistic[]> => {
   }
 };
 
-export const fetchCategories = async (): Promise<any> => {
+export const fetchCategories = async (): Promise<CategoriesStatistic[]> => {
   await connectToMongo();
 
   try {
