@@ -12,6 +12,7 @@ import { redirect } from 'next/navigation';
 import bcrypt from 'bcrypt';
 import { modelProduct } from '@/model/Product';
 import { Statistic } from '@/model/Statistic';
+import { modelCategories } from '@/model/ProductCategories';
 
 export const addUser = async (formData: FormData) => {
   const { userName, email, password, phone, adress } =

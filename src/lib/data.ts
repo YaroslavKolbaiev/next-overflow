@@ -11,6 +11,8 @@ import { ITEMS_PER_PAGE, connectToMongo } from './utils';
 import { modelProduct } from '@/model/Product';
 import { Statistic } from '@/model/Statistic';
 import { modelTransaction } from '@/model/Transaction';
+import { modelCategories } from '@/model/ProductCategories';
+import { ProductCategory } from '@/types/enums';
 
 export const fetchUsers = async (
   search: string,
@@ -138,6 +140,17 @@ export const fetchStats = async (year: string): Promise<UserStatistic[]> => {
   }
 };
 
+export const fetchCategories = async (): Promise<any> => {
+  await connectToMongo();
+
+  try {
+    const categories = await modelCategories.find({}, 'title color value');
+    return categories;
+  } catch (error) {
+    throw new Error('Failed to fetch categories');
+  }
+};
+
 // export const fetchProductsWithDates = async (): Promise<Product[]> => {
 //   await connectToMongo();
 
@@ -157,7 +170,33 @@ export const fetchStats = async (year: string): Promise<UserStatistic[]> => {
 //   await connectToMongo();
 
 //   try {
-//     await modelTransaction.insertMany(transactionsData);
+//     await modelCategories.insertMany([
+//       {
+//         title: ProductCategory.PHONES,
+//         color: '#0088FE',
+//         value: 1,
+//       },
+//       {
+//         title: ProductCategory.LAPTOPS,
+//         color: '#00C49F',
+//         value: 1,
+//       },
+//       {
+//         title: ProductCategory.SPEAKERS,
+//         color: '#FFBB28',
+//         value: 1,
+//       },
+//       {
+//         title: ProductCategory.HEADPHONES,
+//         color: '#FF8042',
+//         value: 0,
+//       },
+//       {
+//         title: ProductCategory.CAMERAS,
+//         color: '#D470A2',
+//         value: 1,
+//       },
+//     ]);
 //   } catch (error) {
 //     console.log(error);
 //   }

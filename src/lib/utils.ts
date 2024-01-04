@@ -65,3 +65,5 @@ export const validatePassword = (value: string) => {
 };
 
 export const currentYear = new Date().getFullYear().toString();
+
+export const RADIAN = Math.PI / 180;
