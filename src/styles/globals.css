@@ -42,6 +42,10 @@
   }
 }
 
+.page-width {
+  @apply w-[calc(100vw-1rem)];
+}
+
 .pagination-link {
   @apply text-gray-500
     text-center

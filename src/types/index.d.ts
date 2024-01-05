@@ -9,6 +9,7 @@ import {
   TableHeadStockPhoneAmount,
   TableHeadMailDescStatus,
 } from './enums';
+import { ReactNode } from 'react';
 
 export interface SidebarLink {
   imgURL: string;
@@ -138,4 +139,9 @@ export interface Statistic {
   id: string;
   year: String;
   statistics: UserStatistic[];
+}
+
+export interface CardProps {
+  children: ReactNode;
+  linkPath: string;
 }

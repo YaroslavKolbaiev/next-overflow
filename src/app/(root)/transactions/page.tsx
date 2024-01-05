@@ -20,8 +20,8 @@ const Transactions = async ({ searchParams }: SearchParamsProps) => {
   return (
     <div
       className="background-light900_dark200
+        page-width
         h-full
-        w-[calc(100vw-1rem)]
         rounded-md
         p-4
         sm:w-full

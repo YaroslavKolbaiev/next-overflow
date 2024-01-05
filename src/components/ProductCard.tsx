@@ -6,7 +6,7 @@ import { MdPhoneIphone } from 'react-icons/md';
 const ProductCard = async () => {
   const totalProducts = await fetchCount('', 'products');
   return (
-    <Card>
+    <Card linkPath='/products'>
       <MdPhoneIphone className="text-dark500_light500" />
       <div className="text-dark100_light900 flex flex-col gap-2 text-sm">
         <h2>Total Products</h2>

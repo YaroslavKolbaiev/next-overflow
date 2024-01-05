@@ -1,8 +1,11 @@
-import React, { ReactNode } from 'react';
+import { CardProps } from '@/types';
+import Link from 'next/link';
+import React from 'react';
 
-const Card = ({ children }: { children: ReactNode }) => {
+const Card = ({ children, linkPath }: CardProps) => {
   return (
-    <div
+    <Link
+      href={linkPath}
       className="background-light900_dark200
         hover:background-light700_dark400
         flex
@@ -15,7 +18,7 @@ const Card = ({ children }: { children: ReactNode }) => {
       "
     >
       {children}
-    </div>
+    </Link>
   );
 };
 

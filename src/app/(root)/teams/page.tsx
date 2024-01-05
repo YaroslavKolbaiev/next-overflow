@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Help = () => {
+const Teams = () => {
   return (
     <div
       className="background-light900_dark200
@@ -11,11 +11,9 @@ const Help = () => {
         sm:w-full
       "
     >
-      <h2 className="text-dark200_light800 text-center font-semibold">
-        For help, please contact your administrator.
-      </h2>
+      <h2 className="text-dark200_light800 font-semibold">No Teams Yet</h2>
     </div>
   );
 };
 
-export default Help;
+export default Teams;

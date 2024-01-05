@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/*create custom styles
-  @apply to inline any existing utility classes into your own custom CSS
-*/
-
 @layer utilities {
   .border-gray300_dark600 {
     @apply border-gray-300 dark:border-gray-600;

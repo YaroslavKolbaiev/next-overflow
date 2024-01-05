@@ -1,4 +1,6 @@
 export default function Loading() {
   // You can add any UI inside Loading, including a Skeleton.
-  return <div>Loading IN USERS ADD</div>;
+  return (
+    <div className="background-light900_dark200 h-full w-full rounded-md " />
+  );
 }

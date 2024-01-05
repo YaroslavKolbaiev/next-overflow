@@ -5,15 +5,15 @@ import { fetchCategories, fetchStats } from '@/lib/data';
 import { SearchParamsProps } from '@/types';
 import React from 'react';
 
-const Revenue = async ({ searchParams }: SearchParamsProps) => {
+const Statistic = async ({ searchParams }: SearchParamsProps) => {
   const year = searchParams.year || '2023';
   const data = await fetchStats(year);
   const categories = await fetchCategories();
   return (
     <div
       className="background-light900_dark200
+        page-width
         h-full
-        w-[calc(100vw-1rem)]
         rounded-md
         p-4
         sm:w-full
@@ -31,4 +31,4 @@ const Revenue = async ({ searchParams }: SearchParamsProps) => {
   );
 };
 
-export default Revenue;
+export default Statistic;

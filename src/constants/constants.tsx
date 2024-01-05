@@ -3,11 +3,11 @@ import {
   MdSupervisedUserCircle,
   MdShoppingBag,
   MdAttachMoney,
-  MdWork,
   MdAnalytics,
   MdPeople,
   MdOutlineSettings,
   MdHelpCenter,
+  MdQueryStats,
 } from 'react-icons/md';
 
 export const themes = [
@@ -46,9 +46,9 @@ export const menuItems = [
     title: 'Analytics',
     list: [
       {
-        title: 'Revenue',
-        path: '/revenue',
-        icon: <MdWork />,
+        title: 'Statistic',
+        path: '/statistic',
+        icon: <MdQueryStats />,
       },
       {
         title: 'Reports',
@@ -80,11 +80,3 @@ export const menuItems = [
 ];
 
 export const years = ['2023', '2024'];
-
-export const COLORS = [
-  { value: '#0088FE', name: 'Phones' },
-  { value: '#00C49F', name: 'Laptops' },
-  { value: '#FFBB28', name: 'Speakers' },
-  { value: '#FF8042', name: 'Headphones' },
-  { value: '#D470A2', name: 'Cameras' },
-];
