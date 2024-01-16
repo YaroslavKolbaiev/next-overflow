@@ -1,9 +1,9 @@
-## Next Admin
+# Next Admin
 
 Full-stack web application built using [NextJS](https://nextjs.org/docs), a popular React framework that enables features such as server-side rendering and static website generation.
 The application is hosted on [Vercel](https://vercel.com/docs), a platform known for its efficient deployment of JavaScript applications.
 
-# About the project
+## About the project
 
 The application is written in [TypeScript](https://www.typescriptlang.org/), a statically typed superset of JavaScript that adds types and other powerful features to the language. This ensures a more robust codebase and helps catch errors early in the development process.
 
@@ -15,6 +15,6 @@ For styling, the application uses [Tailwind CSS](https://tailwindcss.com/), a ut
 
 Authentication is implemented using [Clerk](https://clerk.com/), a complete authentication and user management platform.
 
-# Visit Page
+## Visit Page
 
 https://next-overflow-gold.vercel.app/
