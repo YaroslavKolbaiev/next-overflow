@@ -50,6 +50,9 @@ function PaginationLink({
   disableCondition,
 }: PaginationProps) {
   const pathName = usePathname();
+  const searchParams = useSearchParams();
+
+  const search = searchParams.get('search') || '';
 
   switch (pageName) {
     case PageType.NEXT:
@@ -65,6 +68,7 @@ function PaginationLink({
             pathname: pathName,
             query: {
               page: pageValue,
+              search,
             },
           }}
         >
@@ -84,6 +88,7 @@ function PaginationLink({
             pathname: pathName,
             query: {
               page: pageValue,
+              search,
             },
           }}
         >
@@ -117,6 +122,7 @@ function PaginationLink({
             pathname: pathName,
             query: {
               page: pageValue,
+              search,
             },
           }}
         >
