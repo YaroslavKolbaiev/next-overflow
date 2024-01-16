@@ -4,10 +4,9 @@ import React from 'react';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    // min-h-screen
     <main className="relative">
       <Navbar />
-      <div className="background-light800_dark300 flex pt-2">
+      <div className="flex pt-2 2xl:container">
         <SideBar />
         <section
           className="flex
@@ -16,7 +15,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             px-2
           "
         >
-          <div className="mx-auto w-full max-w-5xl">{children}</div>
+          {children}
         </section>
       </div>
     </main>

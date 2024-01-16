@@ -3,11 +3,11 @@ import {
   MdSupervisedUserCircle,
   MdShoppingBag,
   MdAttachMoney,
-  MdWork,
   MdAnalytics,
   MdPeople,
   MdOutlineSettings,
   MdHelpCenter,
+  MdQueryStats,
 } from 'react-icons/md';
 
 export const themes = [
@@ -37,7 +37,7 @@ export const menuItems = [
       },
       {
         title: 'Transactions',
-        path: '/dashboard/transactions',
+        path: '/transactions',
         icon: <MdAttachMoney />,
       },
     ],
@@ -46,9 +46,9 @@ export const menuItems = [
     title: 'Analytics',
     list: [
       {
-        title: 'Revenue',
-        path: '/revenue',
-        icon: <MdWork />,
+        title: 'Statistic',
+        path: '/statistic',
+        icon: <MdQueryStats />,
       },
       {
         title: 'Reports',
@@ -67,7 +67,7 @@ export const menuItems = [
     list: [
       {
         title: 'Settings',
-        path: '/settings',
+        path: '/user-profile',
         icon: <MdOutlineSettings />,
       },
       {
@@ -78,3 +78,5 @@ export const menuItems = [
     ],
   },
 ];
+
+export const years = ['2023', '2024'];

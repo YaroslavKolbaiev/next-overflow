@@ -1,4 +1,15 @@
 import { BADGE_CRITERIA } from '@/constants';
+import {
+  ProductInput,
+  UserInput,
+  ProductCategory,
+  TransactionStatus,
+  TableHeadNameTitle,
+  TableHeadPriceDate,
+  TableHeadStockPhoneAmount,
+  TableHeadMailDescStatus,
+} from './enums';
+import { ReactNode } from 'react';
 
 export interface SidebarLink {
   imgURL: string;
@@ -6,24 +17,37 @@ export interface SidebarLink {
   label: string;
 }
 
-export interface Job {
-  id?: string;
-  employer_name?: string;
-  employer_logo?: string | undefined;
-  employer_website?: string;
-  job_employment_type?: string;
-  job_title?: string;
-  job_description?: string;
-  job_apply_link?: string;
-  job_city?: string;
-  job_state?: string;
-  job_country?: string;
+export interface User {
+  id: string;
+  userName: string;
+  email: string;
+  password: string;
+  createdAt: string;
+  phone: string;
+  country: string;
 }
 
-export interface Country {
-  name: {
-    common: string;
-  };
+export interface UsersByCountry {
+  id: string;
+  value: number;
+}
+
+export interface Product {
+  id: string;
+  title: string;
+  description: string;
+  price: number;
+  createdAt: Date;
+  stock: number;
+  category: ProductCategory;
+}
+
+export interface Transaction {
+  id: string;
+  name: string;
+  status: TransactionStatus;
+  amount: number;
+  createdAt: string;
 }
 
 export interface ParamsProps {
@@ -39,10 +63,91 @@ export interface URLProps {
   searchParams: { [key: string]: string | undefined };
 }
 
-export interface BadgeCounts {
-  GOLD: number;
-  SILVER: number;
-  BRONZE: number;
+export interface FetchUserResponse {
+  users: User[];
 }
 
-export type BadgeCriteriaType = keyof typeof BADGE_CRITERIA;
+export interface FetchProductsResponse {
+  products: Product[];
+}
+
+export interface FetchTransactionsResponse {
+  transactions: Transaction[];
+}
+
+export interface CategoriesStatistic {
+  id: string;
+  title: ProductCategory;
+  color: string;
+  value: number;
+}
+
+export interface PaginationProps {
+  pageName: string;
+  pageValue: string;
+  disableCondition: boolean;
+}
+
+export interface TableHeadProps {
+  isTransactions?: boolean;
+  head: {
+    name_title: TableHeadNameTitle;
+    mail_description_status: TableHeadMailDescStatus;
+    createdAt_price: TableHeadPriceDate;
+    phone_stock_amount: TableHeadStockPhoneAmount;
+    category?: 'Category';
+  };
+}
+
+export interface FormInputProps {
+  name: ProductInput | UserInput;
+  type: string;
+  defaultValue?: string | number;
+}
+
+export interface TableButtonsProps {
+  href: string;
+  id: string;
+}
+
+export type UserPageProps = {
+  params: {
+    userId: string;
+  };
+};
+
+export type ProductPageProps = {
+  params: {
+    productId: string;
+  };
+};
+
+type NameValue = {
+  name: ProductInput.DESCRIPTION;
+  defaultValue: string;
+};
+
+type Name = {
+  name: UserInput.COUNTRY;
+};
+
+export type FormTextAreaProps = {
+  id: string;
+} & (NameValue | Name);
+
+export interface UserStatistic {
+  monthId: number;
+  month: string;
+  users: number;
+}
+
+export interface Statistic {
+  id: string;
+  year: String;
+  statistics: UserStatistic[];
+}
+
+export interface CardProps {
+  children: ReactNode;
+  linkPath: string;
+}

@@ -21,8 +21,8 @@ const MenuLink = ({ item }: { item: Props }) => {
         gap-2
         rounded-md
         p-5
-        ${currentPath === item.path && 'background-light800_dark400'}
-        hover:background-light800_dark400
+        ${currentPath === item.path && 'active-link'}
+        hover:background-light700_dark400
       `}
     >
       {item.icon}

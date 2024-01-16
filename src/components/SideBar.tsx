@@ -7,11 +7,12 @@ const SideBar = () => {
     <div
       className="background-light900_dark200
         hidden
-        max-w-[260px]
+        max-w-[230px]
         grow
         p-4
         text-black
         md:block
+        2xl:rounded-md
       "
     >
       <ul>
