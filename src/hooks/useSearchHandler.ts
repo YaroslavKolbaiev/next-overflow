@@ -12,6 +12,7 @@ export const UseSearchHandler = (target: string) => {
       const params = new URLSearchParams(searchParams);
 
       if (e.target.value) {
+        params.set('page', '1');
         params.set(target, e.target.value);
       } else {
         params.delete(target);
