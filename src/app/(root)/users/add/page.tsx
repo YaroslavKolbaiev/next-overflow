@@ -1,5 +1,6 @@
 import FormButton from '@/components/FormButton';
 import FormInput from '@/components/FormInput';
+import SelectCountry from '@/components/SelectCountry';
 import { addUser } from '@/lib/actions';
 import { UserInput } from '@/types/enums';
 import React from 'react';
@@ -16,8 +17,10 @@ const AddUser = () => {
           <FormInput type="password" name={UserInput.PASSWORD} />
           <FormInput type="text" name={UserInput.PHONE} />
         </div>
-        <FormInput type="text" name={UserInput.ADRESS} />
-        <FormButton title="Submit" />
+        <div className="flex gap-5">
+          <SelectCountry />
+          <FormButton title="Submit" />
+        </div>
       </form>
     </div>
   );

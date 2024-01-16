@@ -6,6 +6,7 @@ import {
   Product,
   User,
   UserStatistic,
+  UsersByCountry,
 } from '@/types';
 import { modelUser } from '../model/User';
 import { ITEMS_PER_PAGE, connectToMongo } from './utils';
@@ -13,6 +14,7 @@ import { modelProduct } from '@/model/Product';
 import { Statistic } from '@/model/Statistic';
 import { modelTransaction } from '@/model/Transaction';
 import { modelCategories } from '@/model/ProductCategories';
+import { modelUserByCountry } from '@/model/UsersByCountry';
 
 export const fetchUsers = async (
   search: string,
@@ -146,6 +148,20 @@ export const fetchCategories = async (): Promise<CategoriesStatistic[]> => {
   try {
     const categories = await modelCategories.find({}, 'title color value');
     return categories;
+  } catch (error) {
+    throw new Error('Failed to fetch categories');
+  }
+};
+
+export const fetchUsersByCountry = async (): Promise<UsersByCountry[]> => {
+  await connectToMongo();
+
+  try {
+    const usersByCountry = await modelUserByCountry.find(
+      {},
+      { _id: 0, __v: 0 }
+    );
+    return usersByCountry;
   } catch (error) {
     throw new Error('Failed to fetch categories');
   }

@@ -1,6 +1,5 @@
 'use client';
 
-import { COLORS } from '@/constants/constants';
 import { CategoriesStatistic } from '@/types';
 import React from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
@@ -40,11 +39,8 @@ const ProductsByCategoryChart = ({
               outerRadius={80}
               dataKey="value"
             >
-              {categories.map((_entry, index: number) => (
-                <Cell
-                  key={`cell-${index}`}
-                  fill={COLORS[index % COLORS.length].value}
-                />
+              {categories.map(({ color }, index: number) => (
+                <Cell key={`cell-${index}`} fill={color} />
               ))}
             </Pie>
           </PieChart>

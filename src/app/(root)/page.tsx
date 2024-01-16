@@ -1,13 +1,12 @@
-import Chart from '@/components/Chart';
 import ProductCard from '@/components/ProductCard';
 import Transactions from '@/components/Transactions';
 import TransactionsCard from '@/components/TransactionsCard';
+import UsersByCountryChart from '@/components/UsersByCountry';
 import UsersCard from '@/components/UsersCard';
-import { fetchStats } from '@/lib/data';
-import { currentYear } from '@/lib/utils';
+import { fetchUsersByCountry } from '@/lib/data';
 
 export default async function Home() {
-  const data = await fetchStats(currentYear);
+  const users = await fetchUsersByCountry();
   return (
     <>
       <div className="mb-2 flex flex-col justify-between gap-4 sm:flex-row">
@@ -15,8 +14,10 @@ export default async function Home() {
         <ProductCard />
         <TransactionsCard />
       </div>
-      <Transactions />
-      <Chart data={data} />
+      <div className="grid h-full grid-cols-5 grid-rows-2 gap-2 xl:grid-rows-none">
+        <Transactions />
+        <UsersByCountryChart users={users} />
+      </div>
     </>
   );
 }

@@ -1,3 +1,4 @@
+import { User } from '@/types';
 import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
@@ -20,7 +21,7 @@ const userSchema = new Schema(
       required: true,
       min: 6,
     },
-    adress: {
+    country: {
       type: String,
     },
     phone: {

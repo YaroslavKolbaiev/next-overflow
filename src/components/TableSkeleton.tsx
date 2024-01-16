@@ -2,7 +2,7 @@ import React from 'react';
 import Skeleton from './Skeleton';
 
 const TableSkeleton = () => {
-  const arr = ['1', '2', '3', '4', '5'];
+  const arr = ['1', '2', '3', '4', '5', '6', '7', '8'];
   return (
     <tbody className="">
       {arr.map((item, i) => (

@@ -3,7 +3,8 @@ import React from 'react';
 const Teams = () => {
   return (
     <div
-      className="background-light900_dark200
+      className="
+        background-light900_dark200
         page-width
         h-full
         rounded-md

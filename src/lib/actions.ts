@@ -13,9 +13,10 @@ import bcrypt from 'bcrypt';
 import { modelProduct } from '@/model/Product';
 import { Statistic } from '@/model/Statistic';
 import { modelCategories } from '@/model/ProductCategories';
+import { modelUserByCountry } from '@/model/UsersByCountry';
 
 export const addUser = async (formData: FormData) => {
-  const { userName, email, password, phone, adress } =
+  const { userName, email, password, phone, country } =
     Object.fromEntries(formData);
 
   const errors = {
@@ -49,7 +50,7 @@ export const addUser = async (formData: FormData) => {
       email,
       password: hashedPassword,
       phone,
-      adress,
+      country,
     });
     await user.save();
 
@@ -57,6 +58,10 @@ export const addUser = async (formData: FormData) => {
       { year: currentYear },
       { $inc: { 'statistics.$[element].users': 1 } },
       { arrayFilters: [{ 'element.monthId': user.createdAt.getMonth() }] }
+    );
+    await modelUserByCountry.findOneAndUpdate(
+      { id: country },
+      { $inc: { value: 1 } }
     );
   } catch (error) {
     throw new Error('Failed to add user');
@@ -160,7 +165,7 @@ export const editProduct = async (formData: FormData) => {
 };
 
 export const editUser = async (formData: FormData) => {
-  const { id, userName, email, phone, adress } = Object.fromEntries(formData);
+  const { id, userName, email, phone, country } = Object.fromEntries(formData);
 
   await connectToMongo();
 
@@ -174,7 +179,7 @@ export const editUser = async (formData: FormData) => {
       userName,
       email,
       phone,
-      adress,
+      country,
     });
   } catch (error) {
     throw new Error('Failed to edit user');

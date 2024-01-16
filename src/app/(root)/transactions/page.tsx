@@ -19,7 +19,8 @@ const Transactions = async ({ searchParams }: SearchParamsProps) => {
 
   return (
     <div
-      className="background-light900_dark200
+      className="
+        background-light900_dark200
         page-width
         h-full
         rounded-md
@@ -29,7 +30,8 @@ const Transactions = async ({ searchParams }: SearchParamsProps) => {
     >
       <div className="overflow-x-auto">
         <table
-          className="text-dark200_light800
+          className="
+            text-dark200_light800
             w-full
             text-left
             text-xs

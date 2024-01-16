@@ -32,16 +32,6 @@ export const converDate = (date: string) => {
 
 export const ITEMS_PER_PAGE = 10;
 
-function wait(delay: number) {
-  return new Promise((resolve) => setTimeout(resolve, delay));
-}
-
-export async function getData(data: any): Promise<any> {
-  return wait(3000).then(() => {
-    return data;
-  });
-}
-
 export const validateEmail = (value: string) => {
   if (!value) {
     return 'Email is required';

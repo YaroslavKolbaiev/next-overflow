@@ -17,7 +17,7 @@ export enum UserInput {
   EMAIL = 'email',
   PASSWORD = 'password',
   PHONE = 'phone',
-  ADRESS = 'adress',
+  COUNTRY = 'country',
 }
 
 export enum ProductInput {

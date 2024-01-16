@@ -3,16 +3,29 @@ import FormInput from '@/components/FormInput';
 import { UserInput } from '@/types/enums';
 import { UserPageProps } from '@/types';
 import FormButton from '@/components/FormButton';
-import FormTextArea from '@/components/FormTextArea';
 import { fetchUserById } from '@/lib/data';
 import { editUser } from '@/lib/actions';
+import countries from '@/constants/countries.json';
+import { converDate } from '@/lib/utils';
 
 const UserPage = async ({ params: { userId } }: UserPageProps) => {
-  const { userName, email, phone, adress } = await fetchUserById(userId);
+  const { userName, email, phone, country, createdAt } = await fetchUserById(
+    userId
+  );
 
   return (
-    <div className="grid h-full gap-4 md:grid-cols-6">
-      <div className="background-light900_dark200 flex h-fit flex-col rounded-md p-4 md:col-span-2">
+    <div className="grid h-full gap-4 md:grid-cols-7">
+      <div
+        className="background-light900_dark200
+          flex
+          h-fit
+          flex-col
+          gap-4
+          rounded-md
+          p-4
+          md:col-span-3
+        "
+      >
         <h2 className="text-dark200_light800 mb-4 text-center font-bold">
           User Info
         </h2>
@@ -31,8 +44,14 @@ const UserPage = async ({ params: { userId } }: UserPageProps) => {
           {phone}
         </p>
         <p className="text-dark200_light800">
-          <span className="text-dark400_light500 font-semibold">Adress:</span>{' '}
-          {adress}
+          <span className="text-dark400_light500 font-semibold">Country:</span>{' '}
+          {countries.find((c) => c.alpha3 === country)?.name}
+        </p>
+        <p className="text-dark200_light800">
+          <span className="text-dark400_light500 font-semibold">
+            Registered:
+          </span>{' '}
+          {converDate(createdAt)}
         </p>
       </div>
       <form
@@ -43,7 +62,6 @@ const UserPage = async ({ params: { userId } }: UserPageProps) => {
         <FormInput name={UserInput.USER_NAME} type="text" />
         <FormInput name={UserInput.EMAIL} type="email" />
         <FormInput name={UserInput.PHONE} type="text" />
-        <FormTextArea name={UserInput.ADRESS} id="address" />
         <FormButton title="Update" />
       </form>
     </div>

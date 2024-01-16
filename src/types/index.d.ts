@@ -24,7 +24,12 @@ export interface User {
   password: string;
   createdAt: string;
   phone: string;
-  adress: string;
+  country: string;
+}
+
+export interface UsersByCountry {
+  id: string;
+  value: number;
 }
 
 export interface Product {
@@ -117,17 +122,18 @@ export type ProductPageProps = {
   };
 };
 
+type NameValue = {
+  name: ProductInput.DESCRIPTION;
+  defaultValue: string;
+};
+
+type Name = {
+  name: UserInput.COUNTRY;
+};
+
 export type FormTextAreaProps = {
   id: string;
-} & (
-  | {
-      name: ProductInput.DESCRIPTION;
-      defaultValue: string;
-    }
-  | {
-      name: UserInput.ADRESS;
-    }
-);
+} & (NameValue | Name);
 
 export interface UserStatistic {
   monthId: number;

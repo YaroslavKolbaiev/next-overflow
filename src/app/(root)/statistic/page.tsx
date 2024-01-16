@@ -11,7 +11,8 @@ const Statistic = async ({ searchParams }: SearchParamsProps) => {
   const categories = await fetchCategories();
   return (
     <div
-      className="background-light900_dark200
+      className="
+        background-light900_dark200
         page-width
         h-full
         rounded-md

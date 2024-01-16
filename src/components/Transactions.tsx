@@ -13,11 +13,10 @@ const Transactions = () => {
   return (
     <div
       className="background-light900_dark200
-        page-width
-        mb-2
+        col-span-6
         rounded-md
         p-4
-        sm:w-full
+        xl:col-span-2
       "
     >
       <h1 className="text-dark500_light500 mb-3 font-semibold">

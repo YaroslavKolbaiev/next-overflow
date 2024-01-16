@@ -33,7 +33,8 @@ export default function Error({
         <button
           onClick={() => reset()}
           type="button"
-          className="border-gray300_dark600
+          className="
+            border-gray300_dark600
             me-2
             inline-flex
             items-center
