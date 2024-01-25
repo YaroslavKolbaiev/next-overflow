@@ -47,9 +47,9 @@ const Users = async ({ searchParams }: SearchParamsProps) => {
               phone_stock_amount: TableHeadStockPhoneAmount.PHONE,
             }}
           />
-          <Suspense key={page + search} fallback={<TableSkeleton />}>
-            <UsersTabe search={search} page={page} />
-          </Suspense>
+          {/* <Suspense key={page + search} fallback={<TableSkeleton />}> */}
+          <UsersTabe search={search} page={+page} />
+          {/* </Suspense> */}
         </table>
         {usersCount > ITEMS_PER_PAGE && <Pagination totalItems={usersCount} />}
       </div>

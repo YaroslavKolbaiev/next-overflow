@@ -1,10 +1,12 @@
 'use client';
 
+import { IsLoadingContext } from '@/context/IsLoadingProvider';
 import { ITEMS_PER_PAGE } from '@/lib/utils';
 import { PaginationProps } from '@/types';
 import { PageType } from '@/types/enums';
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
+import { useContext } from 'react';
 
 function Pagination({ totalItems }: { totalItems: number }) {
   const searchParams = useSearchParams();
@@ -54,10 +56,13 @@ function PaginationLink({
 
   const search = searchParams.get('search') || '';
 
+  const { setIsLoading } = useContext(IsLoadingContext);
+
   switch (pageName) {
     case PageType.NEXT:
       return (
         <Link
+          onClick={() => setIsLoading(true)}
           className={`pagination-link
             w-28
             rounded-r-lg
@@ -78,6 +83,7 @@ function PaginationLink({
     case PageType.PREVIOUS:
       return (
         <Link
+          onClick={() => setIsLoading(true)}
           className={`pagination-link
             w-28
             rounded-l-lg
@@ -111,6 +117,7 @@ function PaginationLink({
     default:
       return (
         <Link
+          onClick={() => setIsLoading(true)}
           className={`pagination-link
             hidden
             px-4

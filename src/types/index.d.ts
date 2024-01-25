@@ -64,11 +64,11 @@ export interface URLProps {
 }
 
 export interface FetchUserResponse {
-  users: User[];
+  usersReponse: User[] | string;
 }
 
 export interface FetchProductsResponse {
-  products: Product[];
+  productsResponse: Product[] | string;
 }
 
 export interface FetchTransactionsResponse {

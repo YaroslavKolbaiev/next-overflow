@@ -2,7 +2,7 @@ import AddNewBtn from '@/components/AddNewBtn';
 import Pagination from '@/components/Pagination';
 import ProductsTable from '@/components/ProductsTable';
 import TableHead from '@/components/TableHead';
-import TableSkeleton from '@/components/TableSkeleton';
+// import TableSkeleton from '@/components/TableSkeleton';
 import { fetchCount } from '@/lib/data';
 import { ITEMS_PER_PAGE } from '@/lib/utils';
 import { SearchParamsProps } from '@/types';
@@ -12,7 +12,7 @@ import {
   TableHeadPriceDate,
   TableHeadStockPhoneAmount,
 } from '@/types/enums';
-import React, { Suspense } from 'react';
+import React from 'react';
 
 const Products = async ({ searchParams }: SearchParamsProps) => {
   const search = searchParams.search || '';
@@ -48,9 +48,9 @@ const Products = async ({ searchParams }: SearchParamsProps) => {
               category: 'Category',
             }}
           />
-          <Suspense key={page + search} fallback={<TableSkeleton />}>
-            <ProductsTable search={search} page={page} />
-          </Suspense>
+          {/* <Suspense key={page + search} fallback={<TableSkeleton />}> */}
+          <ProductsTable search={search} page={+page} />
+          {/* </Suspense> */}
         </table>
         {productCount > ITEMS_PER_PAGE && (
           <Pagination totalItems={productCount} />
