@@ -30,9 +30,9 @@ export const fetchUsers = async (
       .limit(ITEMS_PER_PAGE)
       .skip(ITEMS_PER_PAGE * (page - 1));
 
-    return { users };
+    return { usersReponse: users };
   } catch (error: any) {
-    throw new Error(error.message);
+    return { usersReponse: error.message };
   }
 };
 
@@ -49,9 +49,9 @@ export const fetchProducts = async (
       .limit(ITEMS_PER_PAGE)
       .skip(ITEMS_PER_PAGE * (page - 1));
 
-    return { products };
+    return { productsResponse: products };
   } catch (error: any) {
-    throw new Error(error.message);
+    return { productsResponse: error.message };
   }
 };
 
